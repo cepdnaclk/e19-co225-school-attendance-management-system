@@ -5,6 +5,8 @@ import com.spincoders.attendancemanagement.repo.Adminrepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AdminImp implements AdminService {
 
@@ -14,5 +16,10 @@ public class AdminImp implements AdminService {
     @Override
     public Admin saveAdmin(Admin admin) {
         return adminrepo.save(admin);
+    }
+
+    @Override
+    public List<Admin> getAllAdmin() {
+        return adminrepo.findAll();
     }
 }
