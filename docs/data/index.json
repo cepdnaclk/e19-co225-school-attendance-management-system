@@ -1,0 +1,35 @@
+{
+    "team": [
+        {
+            "name": "Premawansha L M A H",
+            "email": "e19300@eng.pdn.ac.lk",
+            "eNumber": "E/19/300"
+        },
+        {
+            "name": "Premachandra k H J D",
+            "email": "e10295@eng.pdn.ac.lk",
+            "eNumber": "E/19/300"
+        },
+        {
+            "name": "Wimalasiri ",
+            "email": "email@eng.pdn.ac.lk",
+            "eNumber": "E/yy/xxx"
+        }
+		{
+            "name": "Thevambikai",
+            "email": "e19494@eng.pdn.ac.lk",
+            "eNumber": "E/19/494"
+        }
+    ],
+    "supervisors": [
+        {
+            "name": "Dr. Supervisor 1",
+            "email": "email@eng.pdn.ac.lk"
+        },
+        {
+            "name": "Supervisor 2",
+            "email": "email@eng.pdn.ac.lk"
+        }
+    ],
+    "tags": []
+}
