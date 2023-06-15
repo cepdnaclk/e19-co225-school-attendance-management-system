@@ -1,13 +1,14 @@
 package com.spincoders.attendancemanagement.model;
+
 import jakarta.persistence.*;
+import org.springframework.stereotype.Service;
 
 @Entity
-@Table(name = "Guardian")
-public class Guardian {
+public class Mother {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "GuardianID")
-    private int guardianID;
+    @Column(name = "MotherID")
+    private int motherID;
     @Column(name = "Name")
     private String name;
 
@@ -23,20 +24,20 @@ public class Guardian {
     @Column(name = "Job")
     private String job;
 
-    // Guardian-Student (One-One)
+    // Mother-Student (One-One)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "studnetID")
     private Student student;
 
-    public Guardian() {
+    public Mother() {
     }
 
-    public int getGuardianID() {
-        return guardianID;
+    public int getMotherID() {
+        return motherID;
     }
 
-    public void setGuardianID(int guardianID) {
-        this.guardianID = guardianID;
+    public void setMotherID(int motherID) {
+        this.motherID = motherID;
     }
 
     public String getName() {
@@ -86,5 +87,4 @@ public class Guardian {
     public void setStudent(Student student) {
         this.student = student;
     }
-
 }

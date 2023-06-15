@@ -1,13 +1,14 @@
 package com.spincoders.attendancemanagement.model;
+
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Guardian")
-public class Guardian {
+public class Father {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "GuardianID")
-    private int guardianID;
+    @Column(name = "FatherID")
+    private int fatherID;
     @Column(name = "Name")
     private String name;
 
@@ -23,20 +24,20 @@ public class Guardian {
     @Column(name = "Job")
     private String job;
 
-    // Guardian-Student (One-One)
+    // Father-Student (One-One)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "studnetID")
     private Student student;
 
-    public Guardian() {
+    public Father() {
     }
 
-    public int getGuardianID() {
-        return guardianID;
+    public int getFatherID() {
+        return fatherID;
     }
 
-    public void setGuardianID(int guardianID) {
-        this.guardianID = guardianID;
+    public void setFatherID(int fatherID) {
+        this.fatherID = fatherID;
     }
 
     public String getName() {
@@ -86,5 +87,4 @@ public class Guardian {
     public void setStudent(Student student) {
         this.student = student;
     }
-
 }

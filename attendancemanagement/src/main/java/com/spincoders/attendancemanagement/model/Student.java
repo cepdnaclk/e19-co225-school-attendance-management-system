@@ -2,6 +2,9 @@ package com.spincoders.attendancemanagement.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Student {
     @Id
@@ -9,52 +12,43 @@ public class Student {
     @Column(name = "StudentID")
     private int studnetID;
 
-    // TO DO: Include the reationship type
-    // @OneToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private int adminID;
 
-    @Column(name = "ClassID",nullable = true)
-    private int classID;
+    // Student-Admin (Many-One)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "AdminID")
+    private Admin admin;
+
+    // Student-Teacher (Many-One)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TeacherID")
+    private Teacher teacher;
+
+    // Mother-Student (One-One)
+    @OneToOne(mappedBy = "student")
+    private Mother mother;
+
+    // Father-Student (One-One)
+    @OneToOne(mappedBy = "student")
+    private Father father;
+
+    // Guardian-Student (One-One)
+    @OneToOne(mappedBy = "student")
+    private Guardian guardian;
+
+    // Student-Class (Many-One)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "classID")
+    private Class aClass;
+
+    // Attendance-Student (One-One)
+    @OneToOne(mappedBy = "student")
+    private Attendence attendence;
 
     @Column(name = "Name")
     private String name;
 
     @Column(name = "Address")
     private String address;
-
-    @Column(name = "Father_Name")
-    private String fatherName;
-
-    @Column(name = "Father_Mobile")
-    private String fatherMobile;
-
-    @Column(name = "Father_Job")
-    private String fatherJob;
-
-    @Column(name = "Father_Email")
-    private String fatherEmail;
-
-    @Column(name = "Mother_Name")
-    private String motherName;
-
-    @Column(name = "Mother_Mobile")
-    private String motherMobile;
-
-    @Column(name = "Mother_Job")
-    private String motherJob;
-
-    @Column(name = "Guardian_Name")
-    private String guardianName;
-
-    @Column(name = "Guardian_Mobile")
-    private String guardianMobile;
-
-    @Column(name = "Guardian_Job")
-    private String guardianJob;
-
-    @Column(name = "Guardian_Email")
-    private String guardianEmail;
 
     @Column(name = "Land_Phone")
     private String landPhone;
@@ -66,7 +60,7 @@ public class Student {
     private String height;
 
     @Column(name = "Images")
-    private String images;
+    private String imagelink;
 
     public Student() {
     }
@@ -87,14 +81,6 @@ public class Student {
         this.studnetID = studnetID;
     }
 
-    public int getAdminID() {
-        return adminID;
-    }
-
-    public void setAdminID(int adminID) {
-        this.adminID = adminID;
-    }
-
     public String getName() {
         return name;
     }
@@ -109,94 +95,6 @@ public class Student {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getFatherName() {
-        return fatherName;
-    }
-
-    public void setFatherName(String fatherName) {
-        this.fatherName = fatherName;
-    }
-
-    public String getFatherMobile() {
-        return fatherMobile;
-    }
-
-    public void setFatherMobile(String fatherMobile) {
-        this.fatherMobile = fatherMobile;
-    }
-
-    public String getFatherJob() {
-        return fatherJob;
-    }
-
-    public void setFatherJob(String fatherJob) {
-        this.fatherJob = fatherJob;
-    }
-
-    public String getFatherEmail() {
-        return fatherEmail;
-    }
-
-    public void setFatherEmail(String fatherEmail) {
-        this.fatherEmail = fatherEmail;
-    }
-
-    public String getMotherName() {
-        return motherName;
-    }
-
-    public void setMotherName(String motherName) {
-        this.motherName = motherName;
-    }
-
-    public String getMotherMobile() {
-        return motherMobile;
-    }
-
-    public void setMotherMobile(String motherMobile) {
-        this.motherMobile = motherMobile;
-    }
-
-    public String getMotherJob() {
-        return motherJob;
-    }
-
-    public void setMotherJob(String motherJob) {
-        this.motherJob = motherJob;
-    }
-
-    public String getGuardianName() {
-        return guardianName;
-    }
-
-    public void setGuardianName(String guardianName) {
-        this.guardianName = guardianName;
-    }
-
-    public String getGuardianMobile() {
-        return guardianMobile;
-    }
-
-    public void setGuardianMobile(String guardianMobile) {
-        this.guardianMobile = guardianMobile;
-    }
-
-    public String getGuardianJob() {
-        return guardianJob;
-    }
-
-    public void setGuardianJob(String guardianJob) {
-        this.guardianJob = guardianJob;
-    }
-
-    public String getGuardianEmail() {
-        return guardianEmail;
-    }
-
-    public void setGuardianEmail(String guardianEmail) {
-        this.guardianEmail = guardianEmail;
     }
 
     public String getLandPhone() {
@@ -224,10 +122,74 @@ public class Student {
     }
 
     public String getImages() {
-        return images;
+        return imagelink;
     }
 
     public void setImages(String images) {
-        this.images = images;
+        this.imagelink = images;
+    }
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Mother getMother() {
+        return mother;
+    }
+
+    public void setMother(Mother mother) {
+        this.mother = mother;
+    }
+
+    public Father getFather() {
+        return father;
+    }
+
+    public void setFather(Father father) {
+        this.father = father;
+    }
+
+    public Guardian getGuardian() {
+        return guardian;
+    }
+
+    public void setGuardian(Guardian guardian) {
+        this.guardian = guardian;
+    }
+
+    public Class getaClass() {
+        return aClass;
+    }
+
+    public void setaClass(Class aClass) {
+        this.aClass = aClass;
+    }
+
+    public String getImagelink() {
+        return imagelink;
+    }
+
+    public void setImagelink(String imagelink) {
+        this.imagelink = imagelink;
+    }
+
+    public Attendence getAttendence() {
+        return attendence;
+    }
+
+    public void setAttendence(Attendence attendence) {
+        this.attendence = attendence;
     }
 }

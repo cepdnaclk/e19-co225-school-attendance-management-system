@@ -1,5 +1,6 @@
 package com.spincoders.attendancemanagement.model;
 import jakarta.persistence.*;
+import java.util.*;
 
 @Entity
 @Table(name = "Admin")
@@ -20,6 +21,17 @@ public class Admin {
 
     @Column(name = "Email",nullable = false)
     private String email;
+
+    @Column(name = "Role")
+    private String role;
+
+    // Student-Admin (Many-One)
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
+    private List<Student> students = new ArrayList<>();
+
+    // Teacher-Admin (Many-One)
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
+    private List<Teacher> teachers = new ArrayList<>();
 
     public Admin() {
     }
@@ -62,6 +74,30 @@ public class Admin {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
     }
 }
 

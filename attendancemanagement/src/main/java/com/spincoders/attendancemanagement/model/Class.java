@@ -1,6 +1,7 @@
 package com.spincoders.attendancemanagement.model;
-
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Class")
@@ -13,9 +14,19 @@ public class Class {
     @Column(name = "ClassName",nullable = false)
     private String className;
 
-    @Column(name = "TeacherID")
-    //Add the relationship
-    private int teacherID;
+
+    // Student-Class (Many-One)
+    @OneToMany(mappedBy = "aClass", cascade = CascadeType.ALL)
+    private List<Student> students = new ArrayList<>();
+
+    // Teacher-Class (One-One)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacherID")
+    private Teacher teacher;
+
+   // Attendance-Class (One-One)
+    @OneToOne(mappedBy = "aClass")
+    private Attendence attendence;
 
     public Class() {
     }
@@ -36,11 +47,27 @@ public class Class {
         this.className = className;
     }
 
-    public int getTeacherID() {
-        return teacherID;
+    public List<Student> getStudents() {
+        return students;
     }
 
-    public void setTeacherID(int teacherID) {
-        this.teacherID = teacherID;
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Attendence getAttendence() {
+        return attendence;
+    }
+
+    public void setAttendence(Attendence attendence) {
+        this.attendence = attendence;
     }
 }
