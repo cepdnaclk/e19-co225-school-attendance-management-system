@@ -1,13 +1,13 @@
-package webapplication.Registerlogin;
+package com.example.Mailsending;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RegisterloginApplication {
+public class MailSendingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RegisterloginApplication.class, args);
+		SpringApplication.run(MailSendingApplication.class, args);
 	}
 
 }

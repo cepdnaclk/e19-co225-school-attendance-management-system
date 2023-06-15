@@ -14,11 +14,21 @@
             "name": "Wimalasiri ",
             "email": "email@eng.pdn.ac.lk",
             "eNumber": "E/yy/xxx"
-        }
+        },
+        {
+            "name": "Somawansha M V N L",
+            "email": "e19492@eng.pdn.ac.lk",
+            "eNumber": "E/19/492"
+        },
 		{
             "name": "Thevambikai",
             "email": "e19494@eng.pdn.ac.lk",
             "eNumber": "E/19/494"
+        },
+        {
+            "name": "Danujan",
+            "email":"e19060@eng.pdn.ac.lk",
+            "eNumber": "E/19/060"
         }
     ],
     "supervisors": [
