@@ -23,5 +23,10 @@ public class TeacherImp implements TeacherService{
         return teacherrepo.findAll();
     }
 
+    @Override
+    public Teacher findByEmail(String email) {
+        return teacherrepo.findByEmail(email);
+    }
+
 
 }

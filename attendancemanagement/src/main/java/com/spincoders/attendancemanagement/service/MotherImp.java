@@ -22,4 +22,9 @@ public class MotherImp implements MotherService {
     public List<Mother> getAllMother() {
         return motherrepo.findAll();
     }
+
+    @Override
+    public Mother findByEmail(String email) {
+        return motherrepo.findByEmail(email);
+    }
 }
