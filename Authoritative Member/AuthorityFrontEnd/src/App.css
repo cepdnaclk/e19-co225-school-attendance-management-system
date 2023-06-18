@@ -23,7 +23,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
   padding-left: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
 }
+
 
 
 

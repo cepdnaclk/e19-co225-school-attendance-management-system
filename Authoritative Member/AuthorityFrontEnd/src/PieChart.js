@@ -9,8 +9,8 @@ const PieChart = () => {
 
     // Data for the pie chart
     const data = [
-      { label: 'A', value: 30 },
-      { label: 'B', value: 50 },
+      { label: 'A', value: 60 },
+      { label: 'B', value: 20 },
     ];
 
     const total = data.reduce((sum, { value }) => sum + value, 0);
@@ -50,13 +50,13 @@ const PieChart = () => {
     <div>
       <canvas ref={canvasRef} width={200} height={200} />
       <div>
-        <div style={{ display: 'flex' }}>
+        <div style={{ marginLeft: '250px',marginTop: '-150px',display: 'flex' }}>
           <div style={{ width: '15px', height: '15px', backgroundColor: '#fff' }}></div>
-          <p style={{ marginLeft: '5px' }}>A</p>
+          <p style={{ marginLeft: '15px', marginTop: '0', lineHeight: '15px' }}>A</p>
         </div>
-        <div style={{ display: 'flex' }}>
+        <div style={{ marginLeft: '250px',marginTop: '5px',display: 'flex' }}>
           <div style={{ width: '15px', height: '15px', backgroundColor: '#67E7EC' }}></div>
-          <p style={{ marginLeft: '5px' }}>B</p>
+          <p style={{ marginLeft: '15px', marginTop: '0', lineHeight: '15px' }}>B</p>
         </div>
       </div>
     </div>

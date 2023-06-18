@@ -60,9 +60,10 @@ const [submitted, setSubmitted] = useState(false); // State to track form submis
         <br />
         <h1>Hi, Authorityname</h1>
         <p className='para'>
-          You will be able to monitor attendance trends, identify patterns, and address any concerns promptly. As an
-          authority officer, you play a pivotal role in upholding the importance of regular attendance and fostering a
-          positive learning environment for all students.
+          You will be able to monitor attendance trends, identify patterns, and address <br/>
+          any concerns promptly. As an authority officer, you play a pivotal role in <br/>
+          upholding the importance of regular attendance and fostering a positive <br/>
+          learning environment for all students.
         </p>
         <br/>
         <br/>
