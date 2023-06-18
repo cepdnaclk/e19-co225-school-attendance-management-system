@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Class")
-public class Class {
+@Table(name = "Classroom")
+public class Classroom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ClassID",nullable = false)
     private int classID;
-    @Column(name = "ClassName",nullable = false)
+    @Column(name = "ClassName")
     private String className;
 
 
     // Student-Class (Many-One)
-    @OneToMany(mappedBy = "aClass", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "classroom", cascade = CascadeType.ALL)
     private List<Student> students = new ArrayList<>();
 
     // Teacher-Class (One-One)
@@ -25,10 +25,10 @@ public class Class {
     private Teacher teacher;
 
    // Attendance-Class (One-One)
-    @OneToOne(mappedBy = "aClass")
+    @OneToOne(mappedBy = "classroom")
     private Attendence attendence;
 
-    public Class() {
+    public Classroom() {
     }
 
     public int getClassID() {

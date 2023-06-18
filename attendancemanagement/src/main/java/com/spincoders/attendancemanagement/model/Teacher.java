@@ -41,7 +41,7 @@ public class Teacher {
 
     // Teacher-Class (One-One)
     @OneToOne(mappedBy = "teacher")
-    private Class aClass;
+    private Classroom classroom;
 
     public int getTeacherID() {
         return teacherID;
@@ -99,11 +99,11 @@ public class Teacher {
         this.admin = admin;
     }
 
-    public Class getaClass() {
-        return aClass;
+    public Classroom getaClass() {
+        return classroom;
     }
 
-    public void setaClass(Class aClass) {
-        this.aClass = aClass;
+    public void setaClass(Classroom classroom) {
+        this.classroom = classroom;
     }
 }
