@@ -23,4 +23,9 @@ public class GuardianImp implements GuardianService{
     public List<Guardian> getAllGuardian() {
         return guardianrepo.findAll();
     }
+
+    @Override
+    public Guardian findByEmail(String email) {
+        return guardianrepo.findByEmail(email);
+    }
 }

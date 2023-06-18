@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Teacherrepo extends JpaRepository<Teacher, Integer> {
 
+    @Query("SELECT u FROM Teacher u WHERE u.email = :email")
+    Teacher findByEmail(@Param("email") String email);
 }

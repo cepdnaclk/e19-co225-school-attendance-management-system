@@ -12,4 +12,6 @@ public interface TeacherService {
 
     public List<Teacher> getAllTeacher();
 
+    public Teacher findByEmail(String email);
+
 }

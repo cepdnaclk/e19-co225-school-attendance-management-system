@@ -22,4 +22,9 @@ public class FatherImp implements FatherService {
     public List<Father> getAllFather() {
         return fatherrepo.findAll();
     }
+
+    @Override
+    public Father findByEmail(String email) {
+        return fatherrepo.findByEmail(email);
+    }
 }
