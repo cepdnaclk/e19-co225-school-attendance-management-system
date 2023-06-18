@@ -2,29 +2,29 @@ package com.spincoders.attendancemanagement.control;
 
 import com.spincoders.attendancemanagement.model.Admin;
 import com.spincoders.attendancemanagement.model.Guardian;
-import com.spincoders.attendancemanagement.service.AdminService;
+import com.spincoders.attendancemanagement.model.Mother;
 import com.spincoders.attendancemanagement.service.GuardianService;
+import com.spincoders.attendancemanagement.service.MotherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/guardian")
-public class GuardianCtrl {
+@RequestMapping("/mother")
+public class MotherCtrl {
 
     @Autowired
-    private GuardianService guardianService;
+    private MotherService motherService;
 
     @PostMapping("/addNew")
-    public String add(@RequestBody Guardian guardian){
-        guardianService.saveGuardian(guardian);
-        return "New Guardian is added";
+    public String add(@RequestBody Mother mother){
+        motherService.saveMother(mother);
+        return "New Mother is added";
     }
 
     @GetMapping("getAll")
-    public List<Guardian> getAllGuardians(){
-        return guardianService.getAllGuardian();
+    public List<Mother> getAllMothers(){
+        return motherService.getAllMother();
     }
-
 }

@@ -33,7 +33,7 @@ public class Attendence {
     @Id
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "classID")
-    private Class aClass;
+    private Classroom classroom;
 
     public Attendence() {
     }
@@ -86,11 +86,11 @@ public class Attendence {
         this.student = student;
     }
 
-    public Class getaClass() {
-        return aClass;
+    public Classroom getaClass() {
+        return classroom;
     }
 
-    public void setaClass(Class aClass) {
-        this.aClass = aClass;
+    public void setaClass(Classroom classroom) {
+        this.classroom = classroom;
     }
 }

@@ -2,9 +2,6 @@ package com.spincoders.attendancemanagement.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 public class Student {
     @Id
@@ -38,7 +35,7 @@ public class Student {
     // Student-Class (Many-One)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "classID")
-    private Class aClass;
+    private Classroom classroom;
 
     // Attendance-Student (One-One)
     @OneToOne(mappedBy = "student")
@@ -169,12 +166,12 @@ public class Student {
         this.guardian = guardian;
     }
 
-    public Class getaClass() {
-        return aClass;
+    public Classroom getaClass() {
+        return classroom;
     }
 
-    public void setaClass(Class aClass) {
-        this.aClass = aClass;
+    public void setaClass(Classroom classroom) {
+        this.classroom = classroom;
     }
 
     public String getImagelink() {
