@@ -17,14 +17,13 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   color: white;
   padding-left: 20px;
-  overflow-x: auto;
-  white-space: nowrap;
+  
 }
 
 
@@ -67,6 +66,7 @@ body {
   background-position: center center;
   background-size: cover;
   z-index: -1;
+  overflow-x: auto;
 }
 
 

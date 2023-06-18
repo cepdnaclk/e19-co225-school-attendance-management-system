@@ -21,10 +21,10 @@ const PieChart = () => {
       const sliceAngle = (value / total) * 2 * Math.PI;
 
       context.beginPath();
-      if(label=='A'){
-        context.fillStyle = '#fff';
+      if(label==='A'){
+        context.fillStyle = '#2F8087';
       }else{
-        context.fillStyle = '#67E7EC';
+        context.fillStyle = '#fff';
       }
       //context.fillStyle = getRandomColor();
       context.moveTo(canvas.width / 2, canvas.height / 2);
@@ -36,27 +36,17 @@ const PieChart = () => {
     });
   }, []);
 
-  // Helper function to generate random colors
-  const getRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
-
   return (
     <div>
       <canvas ref={canvasRef} width={200} height={200} />
       <div>
         <div style={{ marginLeft: '250px',marginTop: '-150px',display: 'flex' }}>
-          <div style={{ width: '15px', height: '15px', backgroundColor: '#fff' }}></div>
-          <p style={{ marginLeft: '15px', marginTop: '0', lineHeight: '15px' }}>A</p>
+          <div style={{ width: '15px', height: '15px', backgroundColor: '#2F8087' }}></div>
+          <p style={{ marginLeft: '15px', marginTop: '0', lineHeight: '15px',fontSize:'15px' }}>Attendees</p>
         </div>
         <div style={{ marginLeft: '250px',marginTop: '5px',display: 'flex' }}>
-          <div style={{ width: '15px', height: '15px', backgroundColor: '#67E7EC' }}></div>
-          <p style={{ marginLeft: '15px', marginTop: '0', lineHeight: '15px' }}>B</p>
+          <div style={{ width: '15px', height: '15px', backgroundColor: '#fff' }}></div>
+          <p style={{ marginLeft: '15px', marginTop: '0', lineHeight: '15px',fontSize:'15px'}}>Absentees</p>
         </div>
       </div>
     </div>
