@@ -5,6 +5,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import MessageIcon from '@mui/icons-material/Message';
 
 export default function Appbar() {
   return (
@@ -23,8 +25,23 @@ export default function Appbar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} textAlign={'center'}>
             School Attendance Management System
           </Typography>
+          <IconButton
+            size="large"
+            color="inherit"
+            aria-label="notifications"
+            sx={{ mr: 2 }}
+          >
+            <NotificationsIcon />
+          </IconButton>
+          <IconButton
+            size="large"
+            color="inherit"
+            aria-label="messages"
+          >
+            <MessageIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </Box>
   );
-}
+  }
