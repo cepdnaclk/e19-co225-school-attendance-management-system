@@ -113,11 +113,6 @@ export default function Student() {
             textAlign: 'center',
           }}
         >
-          <h1 style={{ textAlign: 'center', color: 'blue' }}>
-            <u>
-              <b>Add Student</b>
-            </u>
-          </h1>
 
           <Box
             component="form"
