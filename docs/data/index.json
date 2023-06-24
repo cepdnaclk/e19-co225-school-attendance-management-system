@@ -29,17 +29,22 @@
             "name": "Danujan",
             "email":"e19060@eng.pdn.ac.lk",
             "eNumber": "E/19/060"
+        },
+        {
+            "name": "Nithusikan",
+            "email":"e19266@eng.pdn.ac.lk",
+            "eNumber": "E/19/266"
         }
     ],
     "supervisors": [
         {
-            "name": "Dr. Supervisor 1",
-            "email": "email@eng.pdn.ac.lk"
+            "name": "Dr. Mahanama Wickramasinghe",
+            "email": "mahanamaw@eng.pdn.ac.lk"
         },
         {
-            "name": "Supervisor 2",
-            "email": "email@eng.pdn.ac.lk"
+            "name": "Mrs. Nadeesha Adikari",
+            "email": "adikari.nadeesha@gmail.com"
         }
     ],
-    "tags": []
+    "tags": ["Java"]
 }
