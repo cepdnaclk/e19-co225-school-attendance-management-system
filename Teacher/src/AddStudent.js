@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import ImageField from './ImageField';
 import Button from '@mui/material/Button';
 import { Container, Paper } from '@mui/material';
+import './App.css';
 
 export default function Student() {
   const paperStyle = { padding: '50px 20px', width: 600, margin: '20px auto' };
@@ -22,7 +24,7 @@ export default function Student() {
   const [landline, setLandline] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
-  const [images, setImages] = useState([]);
+  const [image, setImage] = useState(null);
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -30,6 +32,10 @@ export default function Student() {
 
   const handleAddressChange = (event) => {
     setAddress(event.target.value);
+  };
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setImage(file);
   };
 
   const handleSubmit = (event) => {
@@ -52,7 +58,7 @@ export default function Student() {
       landline,
       weight,
       height,
-      images,
+      image
     };
     console.log(student);
 
@@ -73,7 +79,7 @@ export default function Student() {
     setLandline('');
     setWeight('');
     setHeight('');
-    setImages([]);
+    setImage(null);
 
     // Send the data to the server
     // Your API endpoint and request configuration here
@@ -239,13 +245,7 @@ export default function Student() {
               value={height}
               onChange={(e) => setHeight(e.target.value)}
             />
-            <TextField
-              id="outlined-basic"
-              label="Images"
-              variant="outlined"
-              value={images}
-              onChange={(e) => setImages(e.target.value)}
-            />
+            <ImageField label="Images" onChange={handleImageChange} />
 
             <Button variant="contained" color="primary" onClick={handleSubmit}>
               Add Student
@@ -253,7 +253,6 @@ export default function Student() {
           </Box>
         </Box>
       </Paper>
-    
     </Container>
   );
 }
