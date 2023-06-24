@@ -7,7 +7,7 @@ import AddStudent  from './Pages/AddStudent'
 import MarkAttendance  from './Pages/MarkAttendance'
 import Parent from './Pages/Parent'
 import View from './Pages/ViewStatus'
-
+//npm install react-router-dom
 import {
   createBrowserRouter,
   RouterProvider,
