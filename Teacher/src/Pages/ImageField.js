@@ -33,7 +33,7 @@ const ImageField = ({ label, onChange }) => {
         onChange={handleImageChange}
       />
       {imagePreview && (
-        <img src={imagePreview} alt="Image Preview" style={{ width: '100%', marginTop: 10 }} />
+        <img src={imagePreview} alt="Profile" style={{ width: '100%', marginTop: 10 }} />
       )}
     </div>
   );
