@@ -1,15 +1,21 @@
 import React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import { Card, CardContent, Typography, CircularProgress, Box, Grid } from '@mui/material';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+const attendanceData = [
+  { month: 'Jan', attendance: 80 },
+  { month: 'Feb', attendance: 90 },
+  { month: 'Mar', attendance: 70 },
+  { month: 'Apr', attendance: 85 },
+  { month: 'May', attendance: 95 },
+  { month: 'Jun', attendance: 75 },
+];
 
 export default function AttendanceCard() {
   const totalDays = 180; // Total academic days
-  const absentDays = [3, 10, 17, 24]; // Array of days the student was absent this month
+  const absentDays = [8, 10, 17, 24]; // Array of days the student was absent this month
   const today = new Date().getDate(); // Get the current day
 
   const getPresentDays = () => {
@@ -34,9 +40,6 @@ export default function AttendanceCard() {
     return !absentDays.includes(today);
   };
 
-  const currentDate = new Date().toLocaleDateString();
-  const currentTime = new Date().toLocaleTimeString();
-
   return (
     <div
       style={{
@@ -48,31 +51,38 @@ export default function AttendanceCard() {
         boxSizing: 'border-box',
       }}
     >
-      <Card
-        sx={{
-          maxWidth: 600,
-          flexGrow: 1,
-          transition: 'transform 0.5s',
-          '&:hover': {
-            transform: 'scale(1.05)',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
-          },
-          borderRadius: '10px', // Increase the border radius
-          opacity: 0.8, // Make the card more transparent
-        }}
-      >
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Current Date and Time
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Date: {currentDate}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Time: {currentTime}
-          </Typography>
-        </CardContent>
-      </Card>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Card
+            sx={{
+              maxWidth: '100%', // Set the maxWidth to 100%
+              flexGrow: 1,
+              transition: 'transform 0.5s',
+              '&:hover': {
+                transform: 'scale(1.05)',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
+              },
+              borderRadius: '10px',
+              opacity: 0.8,
+            }}
+          >
+            <CardContent>
+              <Typography variant="h4" gutterBottom>
+                Attendance Overview
+              </Typography>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={attendanceData}>
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="attendance" fill="#8884d8" />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
 
       <div
         style={{

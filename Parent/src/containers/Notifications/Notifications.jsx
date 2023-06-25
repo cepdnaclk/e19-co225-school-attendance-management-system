@@ -31,25 +31,27 @@ const NotificationPage = () => {
   };
 
   return (
-    <Container maxWidth="sm" sx={{marginLeft:'2rem',marginRight:'2rem',width:'80%'}}>
+    <Container maxWidth="sm" sx={{ marginLeft: '2rem', marginRight: '2rem', width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Typography variant="h4" component="h1" align="center" gutterBottom>
         Notifications from Parents
       </Typography>
-      <List>
+      <List sx={{ width: '100%' }}>
         {notifications.map((notification, index) => (
           <Box
             key={index}
             component={Paper}
             sx={{
               marginBottom: '1rem',
-              marginLeft:'2rem',
-              marginRight:'2rem',
+              marginLeft: '2rem',
+              marginRight: '2rem',
               padding: '1rem',
               boxShadow: '0 2px 5px rgba(0, 0, 0, 0.15)',
               transition: 'box-shadow 0.3s',
               '&:hover': {
                 boxShadow: '0 5px 10px rgba(0, 0, 0, 0.3)',
               },
+              width: '90vw', // Adjust the width based on viewport width
+              maxWidth: '500px', // Set a maximum width for larger screens
             }}
           >
             <ListItem>
