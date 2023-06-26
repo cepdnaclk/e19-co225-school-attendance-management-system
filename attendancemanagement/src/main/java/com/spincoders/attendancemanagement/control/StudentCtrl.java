@@ -1,4 +1,5 @@
 package com.spincoders.attendancemanagement.control;
+import com.spincoders.attendancemanagement.model.Father;
 import com.spincoders.attendancemanagement.model.Student;
 import com.spincoders.attendancemanagement.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,15 @@ public class StudentCtrl {
     public ResponseEntity<?> deleteStudent(@PathVariable int id) {
         studentService.deleteStudentById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/getbyID/{id}")
+    public ResponseEntity<Student> getUserByUsername(@PathVariable int id) {
+        Student user = studentService.getStudentById(id);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

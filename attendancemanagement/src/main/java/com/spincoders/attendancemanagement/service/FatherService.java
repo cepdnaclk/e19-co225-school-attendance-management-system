@@ -14,4 +14,7 @@ public interface FatherService {
 
     public Father findByEmail(String email);
 
+    void updateFather(int id, Father updatedFather);
+
+    Father getFatherById(int fatherId);
 }
