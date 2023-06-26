@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
@@ -46,53 +46,82 @@ const ProfilePage = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
-    fullName: 'John Doe',
-    phoneNumber: '123-456-7890',
-    emailAddress: 'john.doe@example.com',
-    address: '123 Main Street, City, State, Zip',
+    name: '',
+    email: '',
+    mobile: '',
+    job: '',
+    student: '',
+    fatherID: '',
+    imagelink: '',
+    studentWeight: '',
+    studentClassroom: '',
+    studentName: '',
+    studentAddress: '',
+    studentHeight: '',
+    studentID: '',
+    studentMobile: ''
   });
 
+  const storedEmail = localStorage.getItem('fatherEmail') || 'father1@example.com';
+  const [relationship, setRelationship] = useState('');
 
-  const fetchFatherByEmail = async (email) => {
+  const fetchFatherDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/father/getbyemail/${email}`);
+      const response = await fetch(`http://localhost:8080/father/getbyemail/${storedEmail}`);
       if (response.ok) {
         const father = await response.json();
-        setFormData({
-          fullName: father.fullName,
-          phoneNumber: father.phoneNumber,
-          emailAddress: father.emailAddress,
-          address: father.address,
-        });
+        setFormData(father); // Update the state directly with the fetched data
+        setRelationship('Father');
       }
     } catch (error) {
       console.error('Error fetching father details:', error);
     }
   };
 
+  const fetchMotherDetails = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/mother/getbyemail/${storedEmail}`);
+      if (response.ok) {
+        const mother = await response.json();
+        setFormData(mother); // Update the state directly with the fetched data
+        setRelationship('Mother');
+      }
+    } catch (error) {
+      console.error('Error fetching mother details:', error);
+    }
+  };
+
+  const fetchGuardianDetails = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/guardian/getbyemail/${storedEmail}`);
+      if (response.ok) {
+        const guardian = await response.json();
+        setFormData(guardian); // Update the state directly with the fetched data
+        setRelationship('Guardian');
+      }
+    } catch (error) {
+      console.error('Error fetching guardian details:', error);
+    }
+  };
+
   useEffect(() => {
-    const email = 'father1@example.com'; // Replace with the desired email
-    fetchFatherByEmail(email);
+    fetchFatherDetails();
+  }, []);
+
+  useEffect(() => {
+    fetchMotherDetails();
+  }, []);
+
+  useEffect(() => {
+    fetchGuardianDetails();
   }, []);
 
   const handleOpen = () => {
     setOpen(true);
-    setFormData({
-      fullName: 'John Doe',
-      phoneNumber: '123-456-7890',
-      emailAddress: 'john.doe@example.com',
-      address: '123 Main Street, City, State, Zip',
-    });
   };
 
   const handleClose = () => {
     setOpen(false);
-    setFormData({
-      fullName: '',
-      phoneNumber: '',
-      emailAddress: '',
-      address: '',
-    });
   };
 
   const handleSubmit = (e) => {
@@ -103,98 +132,103 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <div className={classes.detailsBox}>
-            <Typography variant="h4" gutterBottom>
-              Personal Information
-            </Typography>
-            <Typography variant="body1">Full Name: {formData.fullName}</Typography>
-            <Typography variant="body1">Phone Number: {formData.phoneNumber}</Typography>
-            <Typography variant="body1">Email Address: {formData.emailAddress}</Typography>
-            <Typography variant="body1">Address: {formData.address}</Typography>
-          </div>
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <div className={classes.detailsBox}>
+              <Typography variant="h4" gutterBottom>
+                Personal Information
+              </Typography>
+              <Typography variant="body1">Full Name: {formData.name}</Typography>
+              <Typography variant="body1">Phone Number: {formData.mobile}</Typography>
+              <Typography variant="body1">Email Address: {formData.email}</Typography>
+              <Typography variant="body1">Address: {formData.address}</Typography>
+              <Typography variant="body1">Job: {formData.job}</Typography>
+            </div>
+          </Grid>
+
+          <Grid item xs={12}>
+            <div className={classes.studentBox}>
+              <Typography variant="h4" gutterBottom>
+                Student Information
+              </Typography>
+              <Typography variant="body1">(ren) Name(s): {formData.studentName}</Typography>
+              <Typography variant="body1">Grade/Class: {formData.studentClassroom}</Typography>
+              <Typography variant="body1">Student ID(s): {formData.studentID}</Typography>
+              <Typography variant="body1">Address: {formData.studentAddress}</Typography>
+              <Typography variant="body1">Weight: {formData.studentWeight}</Typography>
+              <Typography variant="body1">Height: {formData.studentHeight}</Typography>
+              <Typography variant="body1">Student Mobile: {formData.studentMobile}</Typography>
+            </div>
+          </Grid>
+
+          <Grid item xs={12}>
+            <div className={classes.studentBox}>
+              <Typography variant="h4" gutterBottom>
+                Relationship to the Student
+              </Typography>
+              <Typography variant="body1">Relationship: {relationship}</Typography>
+            </div>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Button variant="contained" color="primary" onClick={handleOpen}>
+              Edit Details
+            </Button>
+          </Grid>
         </Grid>
 
-        <Grid item xs={12}>
-          <div className={classes.studentBox}>
-            <Typography variant="h4" gutterBottom>
-              Student Information
-            </Typography>
-            <Typography variant="body1">Child(ren) Name(s): Jane Doe, John Doe Jr.</Typography>
-            <Typography variant="body1">Grade/Class: 5th Grade, 2nd Grade</Typography>
-            <Typography variant="body1">Student ID(s): 12345, 67890</Typography>
-          </div>
-        </Grid>
-
-        <Grid item xs={12}>
-          <div className={classes.studentBox}>
-            <Typography variant="h4" gutterBottom>
-              Relationship to the Student
-            </Typography>
-            <Typography variant="body1">Relationship: Father</Typography>
-          </div>
-        </Grid>
-
-        <Grid item xs={12}>
-          <Button variant="contained" color="primary" onClick={handleOpen}>
-            Edit Details
-          </Button>
-        </Grid>
-      </Grid>
-
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Edit Details</DialogTitle>
-        <DialogContent>
-          <form onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  label="Full Name"
-                  variant="outlined"
-                  fullWidth
-                  value={formData.fullName}
-                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                />
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle>Edit Details</DialogTitle>
+          <DialogContent>
+            <form onSubmit={handleSubmit}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                      label="Full Name"
+                      variant="outlined"
+                      fullWidth
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                      label="Phone Number"
+                      variant="outlined"
+                      fullWidth
+                      value={formData.phoneNumber}
+                      onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                      label="Email Address"
+                      variant="outlined"
+                      fullWidth
+                      value={formData.emailAddress}
+                      onChange={(e) => setFormData({ ...formData, emailAddress: e.target.value })}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                      label="Address"
+                      variant="outlined"
+                      fullWidth
+                      value={formData.address}
+                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Button variant="contained" color="primary" type="submit">
+                    Save
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Phone Number"
-                  variant="outlined"
-                  fullWidth
-                  value={formData.phoneNumber}
-                  onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Email Address"
-                  variant="outlined"
-                  fullWidth
-                  value={formData.emailAddress}
-                  onChange={(e) => setFormData({ ...formData, emailAddress: e.target.value })}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Address"
-                  variant="outlined"
-                  fullWidth
-                  value={formData.address}
-                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Button variant="contained" color="primary" type="submit">
-                  Save
-                </Button>
-              </Grid>
-            </Grid>
-          </form>
-        </DialogContent>
-      </Dialog>
-    </div>
+            </form>
+          </DialogContent>
+        </Dialog>
+      </div>
   );
 };
 
