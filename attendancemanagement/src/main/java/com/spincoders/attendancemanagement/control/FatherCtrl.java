@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -31,14 +33,38 @@ public class FatherCtrl {
     }
 
     @GetMapping("/getbyemail/{email}")
-    public ResponseEntity<Father> getUserByUsername(@PathVariable String email) {
-        Father user = fatherService.findByEmail(email);
-        if (user != null) {
-            return ResponseEntity.ok(user);
+    public ResponseEntity<Map<String, Object>> getUserByUsername(@PathVariable String email) {
+        Father father = fatherService.findByEmail(email);
+        if (father != null) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("fatherID", father.getFatherID());
+            response.put("name", father.getName());
+            response.put("password", father.getPassword());
+            response.put("email", father.getEmail());
+            response.put("mobile", father.getMobile());
+            response.put("job", father.getJob());
+            response.put("address", father.getAddress());
+
+            Student student = father.getStudent();
+            if (student != null) {
+                response.put("studentName", student.getName());
+                response.put("studentAddress", student.getAddress());
+                response.put("studnetClassroom", student.getaClass());
+                response.put("imagelink", student.getImagelink());
+                response.put("studentWeight", student.getWeight());
+                response.put("studentHeight", student.getHeight());
+                response.put("studentID", student.getId());
+                response.put("studentMobile", student.getLandPhone());
+
+                // Include other necessary attributes from the Student object
+            }
+
+            return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
+
 
     @GetMapping("/getbyID/{id}")
     public ResponseEntity<Father> getUserByUsername(@PathVariable int id) {
