@@ -22,4 +22,9 @@ public class AdminImp implements AdminService {
     public List<Admin> getAllAdmin() {
         return adminrepo.findAll();
     }
+
+    @Override
+    public Admin findByUsername(String username) {
+        return adminrepo.findByUsername(username);
+    }
 }

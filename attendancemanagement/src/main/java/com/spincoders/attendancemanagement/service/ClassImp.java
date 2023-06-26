@@ -1,6 +1,5 @@
 package com.spincoders.attendancemanagement.service;
 
-import com.spincoders.attendancemanagement.model.Admin;
 import com.spincoders.attendancemanagement.model.Classroom;
 import com.spincoders.attendancemanagement.repo.Classrepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,22 @@ public class ClassImp implements ClassService {
     public List<Classroom> getAllClass() {
         return classrepo.findAll();
     }
+
+ /*   @Override
+    public Classroom findByName(String name) {
+        return classrepo.findByName(name);
+    }*/
+/*
+    @Override
+    public Classroom updateTeachetID(String name, Teacher teacher) {
+        Classroom user = classrepo.findByName(name);
+        if (user != null) {
+            user.setTeacher(teacher);
+            return classrepo.save(user);
+        } else {
+            return null; // or throw an exception if desired
+        }
+    }*/
 
 
 }

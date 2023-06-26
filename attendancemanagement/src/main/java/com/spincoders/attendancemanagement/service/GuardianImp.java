@@ -1,6 +1,5 @@
 package com.spincoders.attendancemanagement.service;
 
-import com.spincoders.attendancemanagement.model.Admin;
 import com.spincoders.attendancemanagement.model.Guardian;
 import com.spincoders.attendancemanagement.repo.Guardianrepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +21,10 @@ public class GuardianImp implements GuardianService{
     @Override
     public List<Guardian> getAllGuardian() {
         return guardianrepo.findAll();
+    }
+
+    @Override
+    public Guardian findByEmail(String email) {
+        return guardianrepo.findByEmail(email);
     }
 }

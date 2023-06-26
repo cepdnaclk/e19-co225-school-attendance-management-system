@@ -1,7 +1,6 @@
 package com.spincoders.attendancemanagement.service;
 
 import com.spincoders.attendancemanagement.model.Father;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,4 +12,9 @@ public interface FatherService {
 
     public List<Father> getAllFather();
 
+    public Father findByEmail(String email);
+
+    void updateFather(int id, Father updatedFather);
+
+    Father getFatherById(int fatherId);
 }

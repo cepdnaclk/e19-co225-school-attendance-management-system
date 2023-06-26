@@ -1,7 +1,6 @@
 package com.spincoders.attendancemanagement.model;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Service;
 
 @Entity
 public class Mother {

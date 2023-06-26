@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface Classrepo extends JpaRepository<Classroom, Integer> {
+
+    /*Classroom findByName(String name);*/
 }

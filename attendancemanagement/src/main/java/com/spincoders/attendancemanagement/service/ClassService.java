@@ -9,5 +9,9 @@ public interface ClassService {
 
     public List<Classroom> getAllClass();
 
+/*    public Classroom findByName(String name);
+
+    public Classroom updateTeachetID(String name, Teacher teacher);*/
+
 
 }

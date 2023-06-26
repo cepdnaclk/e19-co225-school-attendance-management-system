@@ -8,4 +8,6 @@ public interface AdminService {
     public Admin saveAdmin(Admin admin);
     public List<Admin> getAllAdmin();
 
+    public Admin findByUsername(String username);
+
 }

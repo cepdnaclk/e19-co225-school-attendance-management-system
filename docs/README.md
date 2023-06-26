@@ -3,13 +3,13 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: eYY-XXX-project-template
+repository-name: e19-co225-school-attendance-management-system
 title:
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# School Attendence Management System
 
 ---
 
@@ -20,9 +20,14 @@ This is a sample image, to show how to add images to your page. To learn more op
  -->
 
 ## Team
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
--  eNumber, Name, [email](mailto:name@email.com)
+-  E/19/300, Premawansha L M A H, [email](mailto:e19300@eng.pdn.ac.lk)
+-  E/19/295, Premachandra k H J D, [email](mailto:e19295@eng.pdn.ac.lk)
+-  E/19/452, Wimalasiri P M A C, [email](mailto:e19452@eng.pdn.ac.lk)
+- E/19/492, Somawansha M V N L, [email](mailto:e19492@eng.pdn.ac.lk)
+- E/19/494, Thevambikai, [email](mailto:e19494@eng.pdn.ac.lk)
+- E/19/060, Danujan, [email](mailto:e19060@eng.pdn.ac.lk)
+- E/19/266, Nithusikan, [email](mailto:e19266@eng.pdn.ac.lk)
+- E/19/069, Delini, [email](mailto:e19069@eng.pdn.ac.lk)
 
 ## Table of Contents
 1. [Introduction](#introduction)

@@ -24,6 +24,9 @@ public class Father {
     @Column(name = "Job")
     private String job;
 
+    @Column(name = "Address")
+    private String address;
+
     // Father-Student (One-One)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "studnetID")
@@ -78,6 +81,14 @@ public class Father {
 
     public void setJob(String job) {
         this.job = job;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Student getStudent() {

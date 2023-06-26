@@ -22,4 +22,14 @@ public class StudentImp implements StudentService{
     public List<Student> getAllStudent() {
         return studentrepo.findAll();
     }
+
+    @Override
+    public void deleteStudentById(int id) {
+        studentrepo.deleteById(id);
+    }
+
+    @Override
+    public Student getStudentById(int studentId) {
+        return studentrepo.findByID(studentId);
+    }
 }
