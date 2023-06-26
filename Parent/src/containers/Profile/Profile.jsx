@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
@@ -51,6 +51,29 @@ const ProfilePage = () => {
     emailAddress: 'john.doe@example.com',
     address: '123 Main Street, City, State, Zip',
   });
+
+
+  const fetchFatherByEmail = async (email) => {
+    try {
+      const response = await fetch(`http://localhost:8080/father/getbyemail/${email}`);
+      if (response.ok) {
+        const father = await response.json();
+        setFormData({
+          fullName: father.fullName,
+          phoneNumber: father.phoneNumber,
+          emailAddress: father.emailAddress,
+          address: father.address,
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching father details:', error);
+    }
+  };
+
+  useEffect(() => {
+    const email = 'father1@example.com'; // Replace with the desired email
+    fetchFatherByEmail(email);
+  }, []);
 
   const handleOpen = () => {
     setOpen(true);
