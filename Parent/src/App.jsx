@@ -9,6 +9,9 @@ import '@fontsource/roboto/700.css';
 import theme from './config/theme';
 import SideNav from './components/SideNav';
 import AppHeader from './components/AppHeader';
+import { ProSidebarProvider } from 'react-pro-sidebar';
+import AppRoutes from './router/AppRoutes';
+import { BrowserRouter } from 'react-router-dom';
 
 
 function App() {
@@ -16,15 +19,19 @@ function App() {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
+        <ProSidebarProvider>
         <CssBaseline/>
         <AppHeader/>
         <Box sx={styles.container}>
+            <BrowserRouter> 
             <SideNav/>
             <Box component={'main'} sx={styles.mainSection}>
-
+              <AppRoutes/>
             </Box>
+            </BrowserRouter>
         </Box>
-      </ThemeProvider>
+        </ProSidebarProvider>  
+      </ThemeProvider>  
     </React.Fragment>
   )
 }

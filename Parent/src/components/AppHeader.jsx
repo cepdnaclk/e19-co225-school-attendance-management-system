@@ -4,18 +4,21 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Settings } from "@mui/icons-material";
+import { useProSidebar } from "react-pro-sidebar";
 
 function AppHeader(){
+     
     return(
         <AppBar position="sticky" sx={styles.appBar}>
             <Toolbar>
-                <IconButton onClick={()=>console.log('clicked')} color="secondary">
+                <IconButton onClick={()=> broken ? toggleSidebar(): collapseSidebar()} color="secondary">
                     < MenuIcon/>
                 </IconButton>
                 <Box 
                     component='img'
                     sx={styles.appLogo}
                     src="/src/assets/book.png"/>
+                <Box sx={{flexGrow:1}}/>
                 <IconButton title='Notifications'  color="secondary">
                 <Badge badgeContent={14} color="primary">
                     < NotificationsIcon/>
