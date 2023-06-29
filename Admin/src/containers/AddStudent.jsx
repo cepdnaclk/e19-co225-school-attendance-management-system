@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 
 export default function Student() {
     const paperStyle = {padding:'50px 20px',width:"500",margin:"20px auto"};
+
     const [sname, setsname] = useState('');
     const [address, setaddress] = useState('');
     const [email, setemail] = useState('');
@@ -30,15 +31,67 @@ export default function Student() {
 
     const regStudent = (e)=>{
         e.preventDefault()
-        const student = {sname,address,email, fname, f_mobile, f_occupation, fartheremail, mname, m_mobile, m_occupation, gname, g_mobile, g_occupation, guardianemail, l_phone, weight, height, image}
+        const student = {
+            name: sname,
+            address: address,
+            land_phone: l_phone,
+            weight: weight,
+            height: height,
+            images: image
+        };
+        const father = {
+            name: fname,
+            address: address,
+            mobile: f_mobile,
+            email: fartheremail,
+            job: f_occupation
+        };
+        const mother = {
+            name: mname,
+            address: address,
+            mobile: m_mobile,
+            email: fartheremail,
+            job: m_occupation
+        };
+        const guardian = {
+            name: gname,
+            address: address,
+            mobile: g_mobile,
+            email: guardianemail,
+            job: g_occupation
+        };
         console.log(student)
+        console.log(father)
+        console.log(mother)
+        console.log(guardian)
         fetch("http://localhost:8080/student/addNew",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(student)
         }).then(()=>{
             console.log("New Student added")
-        })
+        });
+        fetch("http://localhost:8080/father/addNew",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(father)
+        }).then(()=>{
+            console.log("New Father added")
+        });
+        fetch("http://localhost:8080/mother/addNew",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(mother)
+        }).then(()=>{
+            console.log("New mother added")
+        });
+        fetch("http://localhost:8080/guardian/addNew",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(guardian)
+        }).then(()=>{
+            console.log("New guardian added")
+        });
     }
 
     const delStudent = (e) => {
@@ -88,7 +141,6 @@ export default function Student() {
             noValidate
             autoComplete="off"
         >
-
             <h2>Student's details</h2>
             <TextField id="outlined-basic" label="Name" variant="outlined" fullWidth={true}
                        value={sname} onChange={(e)=>setsname(e.target.value)}
@@ -156,7 +208,7 @@ export default function Student() {
                height={50} // Set the desired height
                margin="auto"
                >
-               <Button variant="contained" color="primary">
+               <Button variant="contained" color="primary" onClick={regStudent}>
                SUBMIT
                </Button>
             </Box>
