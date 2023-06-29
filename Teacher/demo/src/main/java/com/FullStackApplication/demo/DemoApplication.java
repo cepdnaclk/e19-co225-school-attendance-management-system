@@ -10,17 +10,17 @@ import org.springframework.context.event.EventListener;
 @SpringBootApplication
 public class DemoApplication {
 
-	@Autowired
-	private Mailservice mailservice;
+//	@Autowired
+//	private Mailservice mailservice;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@EventListener(ApplicationReadyEvent.class)
-	public void sendMail(){
-		mailservice.sendMailToAll();
-	}
+//	@EventListener(ApplicationReadyEvent.class)
+//	public void sendMail(){
+//		mailservice.sendMailToAll();
+//	}
 
 //	@Override
 //	public void run(String... args) throws Exception{

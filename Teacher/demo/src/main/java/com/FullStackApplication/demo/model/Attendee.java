@@ -1,22 +1,33 @@
 package com.FullStackApplication.demo.model;
 
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.sql.Date;
 
+// To mark attendance and sent emails
 @Entity
-public class Student{
-
+public class Attendee {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //private String username;
+    //private String Attendeename;
     private String name;
     private String email;
     private String markAttendance; // New attribute
     private Date timestamp;
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
 
     public Long getId() {
         return id;
@@ -25,6 +36,14 @@ public class Student{
     public void setId(Long id) {
         this.id = id;
     }
+
+//    public String getAttendeename() {
+//        return Attendeename;
+//    }
+//
+//    public void setAttendeename(String Attendeename) {
+//        this.Attendeename = Attendeename;
+//    }
 
     public String getName() {
         return name;
@@ -42,19 +61,11 @@ public class Student{
         this.email = email;
     }
 
-    public String getMarkAttendance() {
+    public String getMarkAttendance() { // Getter for new attribute
         return markAttendance;
     }
 
-    public void setMarkAttendance(String markAttendance) {
-        this.markAttendance = markAttendance;
-    }
-
-    public Date getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setMarkAttendance(String markattendance) { // Setter for new attribute
+        this.markAttendance = markattendance;
     }
 }
