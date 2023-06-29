@@ -24,9 +24,9 @@ public class Classroom {
     @JoinColumn(name = "teacherID")
     private Teacher teacher;
 
-   // Attendance-Class (One-One)
+   /*// Attendance-Class (One-One)
     @OneToOne(mappedBy = "classroom")
-    private Attendence attendence;
+    private Attendence attendence;*/
 
     public Classroom() {
     }
@@ -63,13 +63,13 @@ public class Classroom {
         this.teacher = teacher;
     }
 
-    public Attendence getAttendence() {
+/*    public Attendence getAttendence() {
         return attendence;
     }
 
     public void setAttendence(Attendence attendence) {
         this.attendence = attendence;
-    }
+    }*/
 
 
 }

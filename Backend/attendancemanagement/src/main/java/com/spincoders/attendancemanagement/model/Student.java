@@ -37,9 +37,9 @@ public class Student {
     @JoinColumn(name = "classID")
     private Classroom classroom;
 
-    // Attendance-Student (One-One)
+/*    // Attendance-Student (One-One)
     @OneToOne(mappedBy = "student")
-    private Attendence attendence;
+    private Attendence attendence;*/
 
     @Column(name = "Name")
     private String name;
@@ -182,11 +182,11 @@ public class Student {
         this.imagelink = imagelink;
     }
 
-    public Attendence getAttendence() {
+/*    public Attendence getAttendence() {
         return attendence;
     }
 
     public void setAttendence(Attendence attendence) {
         this.attendence = attendence;
-    }
+    }*/
 }
