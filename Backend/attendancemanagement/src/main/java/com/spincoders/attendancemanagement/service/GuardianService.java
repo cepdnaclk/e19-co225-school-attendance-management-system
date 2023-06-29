@@ -1,5 +1,6 @@
 package com.spincoders.attendancemanagement.service;
 
+import com.spincoders.attendancemanagement.model.Father;
 import com.spincoders.attendancemanagement.model.Guardian;
 import org.springframework.stereotype.Service;
 
@@ -13,4 +14,8 @@ public interface GuardianService {
     public List<Guardian> getAllGuardian();
 
     public Guardian findByEmail(String email);
+
+    void updateGuardian(int id, Guardian updatedGuardian);
+
+    Guardian getGuardianById(int guardianId);
 }

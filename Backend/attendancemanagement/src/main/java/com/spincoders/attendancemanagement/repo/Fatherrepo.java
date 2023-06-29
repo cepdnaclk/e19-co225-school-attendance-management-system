@@ -11,4 +11,7 @@ public interface Fatherrepo extends JpaRepository<Father, Integer> {
 
     @Query("SELECT u FROM Father u WHERE u.email = :email")
     Father findByEmail(@Param("email") String email);
+
+    @Query("SELECT u FROM Father u WHERE u.fatherID = :fatherid")
+    Father findByID(@Param("fatherid") int fatherid);
 }

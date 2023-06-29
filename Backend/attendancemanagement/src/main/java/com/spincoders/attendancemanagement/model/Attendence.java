@@ -6,14 +6,16 @@ import jakarta.persistence.*;
 public class Attendence {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "AttendenceID")
+    private int attendenceID;
+
     @Column(name = "Year")
     private int year;
 
-    @Id
     @Column(name = "Month")
     private int month;
 
-    @Id
     @Column(name = "Date")
     private int date;
 
@@ -24,19 +26,29 @@ public class Attendence {
     private String note;
 
     // Attendance-Student (One-One)
-    @Id
-    @OneToOne(fetch = FetchType.LAZY)
+/*    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "studnetID")
-    private Student student;
+    private Student student;*/
 
-   // Attendance-Class (One-One)
-    @Id
+ /*  // Attendance-Class (One-One)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "classID")
-    private Classroom classroom;
+    private Classroom classroom;*/
+
+    private int studentID;
+    private int classID;
 
     public Attendence() {
     }
+
+    public int getAttendenceID() {
+        return attendenceID;
+    }
+
+    public void setAttendenceID(int attendenceID) {
+        this.attendenceID = attendenceID;
+    }
+
 
     public int getYear() {
         return year;
@@ -78,19 +90,19 @@ public class Attendence {
         this.note = note;
     }
 
-    public Student getStudent() {
-        return student;
+    public int getStudentID() {
+        return studentID;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
     }
 
-    public Classroom getaClass() {
-        return classroom;
+    public int getClassID() {
+        return classID;
     }
 
-    public void setaClass(Classroom classroom) {
-        this.classroom = classroom;
+    public void setClassID(int classID) {
+        this.classID = classID;
     }
 }
