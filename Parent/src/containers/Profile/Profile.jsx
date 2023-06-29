@@ -62,7 +62,7 @@ const ProfilePage = () => {
     studentMobile: ''
   });
 
-  const storedEmail = localStorage.getItem('fatherEmail') || 'father1@example.com';
+  const storedEmail = localStorage.getItem('fatherEmail') || 'mother1@example.com';
   const [relationship, setRelationship] = useState('');
 
   const fetchFatherDetails = async () => {
