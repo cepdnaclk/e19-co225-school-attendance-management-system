@@ -46,6 +46,7 @@ const ProfilePage = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
+<<<<<<< Updated upstream
     name: '',
     email: '',
     mobile: '',
@@ -72,6 +73,49 @@ const ProfilePage = () => {
         const father = await response.json();
         setFormData(father); // Update the state directly with the fetched data
         setRelationship('Father');
+=======
+<<<<<<< HEAD
+    fullName: '',
+    phoneNumber: '',
+    emailAddress: '',
+    address: '',
+  });
+
+  const fetchFatherDetails = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/father/getbyemail/father1@example.com');
+      if (response.ok) {
+        const father = await response.json();
+        setFormData(father); // Update the state directly with the fetched data
+=======
+    name: '',
+    email: '',
+    mobile: '',
+    job: '',
+    student: '',
+    fatherID: '',
+    imagelink: '',
+    studentWeight: '',
+    studentClassroom: '',
+    studentName: '',
+    studentAddress: '',
+    studentHeight: '',
+    studentID: '',
+    studentMobile: ''
+  });
+
+  const storedEmail = localStorage.getItem('fatherEmail') || 'mother1@example.com';
+  const [relationship, setRelationship] = useState('');
+
+  const fetchFatherDetails = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/father/getbyemail/${storedEmail}`);
+      if (response.ok) {
+        const father = await response.json();
+        setFormData(father); // Update the state directly with the fetched data
+        setRelationship('Father');
+>>>>>>> 9d2132380e090c70ae27618294e46c2c24f317ea
+>>>>>>> Stashed changes
       }
     } catch (error) {
       console.error('Error fetching father details:', error);
@@ -106,6 +150,11 @@ const ProfilePage = () => {
 
   useEffect(() => {
     fetchFatherDetails();
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
   }, []);
 
   useEffect(() => {
@@ -114,6 +163,10 @@ const ProfilePage = () => {
 
   useEffect(() => {
     fetchGuardianDetails();
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9d2132380e090c70ae27618294e46c2c24f317ea
+>>>>>>> Stashed changes
   }, []);
 
   const handleOpen = () => {
@@ -178,6 +231,51 @@ const ProfilePage = () => {
           </Grid>
         </Grid>
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+        <Grid item xs={12}>
+          <div className={classes.studentBox}>
+            <Typography variant="h4" gutterBottom>
+              Student Information
+            </Typography>
+            <Typography variant="body1">(ren) Name(s): Jane Doe, John Doe Jr.</Typography>
+            <Typography variant="body1">Grade/Class: 5th Grade, 2nd Grade</Typography>
+            <Typography variant="body1">Student ID(s): 12345, 67890</Typography>
+          </div>
+        </Grid>
+
+        <Grid item xs={12}>
+          <div className={classes.studentBox}>
+            <Typography variant="h4" gutterBottom>
+              Relationship to the Student
+            </Typography>
+            <Typography variant="body1">Relationship: Father</Typography>
+          </div>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Button variant="contained" color="primary" onClick={handleOpen}>
+            Edit Details
+          </Button>
+        </Grid>
+      </Grid>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Edit Details</DialogTitle>
+        <DialogContent>
+          <form onSubmit={handleSubmit}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  label="Full Name"
+                  variant="outlined"
+                  fullWidth
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                />
+=======
+>>>>>>> Stashed changes
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Edit Details</DialogTitle>
           <DialogContent>
@@ -224,6 +322,10 @@ const ProfilePage = () => {
                     Save
                   </Button>
                 </Grid>
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9d2132380e090c70ae27618294e46c2c24f317ea
+>>>>>>> Stashed changes
               </Grid>
             </form>
           </DialogContent>
