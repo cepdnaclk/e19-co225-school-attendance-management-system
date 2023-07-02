@@ -4,6 +4,7 @@ import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Dashboard from "./admin/App";
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -19,7 +20,7 @@ function App() {
           path="/"
           element={
             auth ? (
-              <Home setAuth={setAuth} />
+              <Dashboard setAuth={setAuth} />
             ) : (
               <Navigate to="/login" state={{ from: location }} replace />
             )
