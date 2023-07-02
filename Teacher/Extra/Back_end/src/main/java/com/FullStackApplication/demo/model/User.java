@@ -1,25 +1,22 @@
 package com.FullStackApplication.demo.model;
 
-
-
-import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.sql.Date;
 
 // To mark attendance and sent emails
 @Entity
-public class Attendee {
+public class User {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //private String Attendeename;
+    //private String username;
     private String name;
     private String email;
-    @Column(columnDefinition = "varchar(255) default 'Absent'")
     private String markAttendance; // New attribute
-    //@Temporal(TemporalType.DATE)
-    @CreationTimestamp
     private Date timestamp;
 
     public Date getTimestamp() {
@@ -38,12 +35,12 @@ public class Attendee {
         this.id = id;
     }
 
-//    public String getAttendeename() {
-//        return Attendeename;
+//    public String getUsername() {
+//        return username;
 //    }
 //
-//    public void setAttendeename(String Attendeename) {
-//        this.Attendeename = Attendeename;
+//    public void setUsername(String username) {
+//        this.username = username;
 //    }
 
     public String getName() {
