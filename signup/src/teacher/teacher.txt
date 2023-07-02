@@ -1,0 +1,1 @@
+Add all teacher element here and route to to sign up page
