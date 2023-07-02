@@ -52,14 +52,33 @@ public class AttendanceController {
         this.attendanceService = attendanceService;
     }
 
+    //To get the total present count
     @GetMapping("/presentCount")
     public long getPresentStudentCount() {
         return attendanceService.getPresentStudentCount();
     }
-
+    //To get the totala absent count of the school
     @GetMapping("/absentCount")
     public long getAbsentStudentCount() {
         return attendanceService.getAbsentStudentCount();
+    }
+
+    //Attendance of a class on that day
+    @GetMapping("/gradeBasedAttendanceCount")
+    public ResponseEntity<Map<Boolean, Integer>> getAttendanceCounts(@RequestParam String grade) {
+        Map<Boolean, Integer> attendanceCounts = attendanceService.countsByGradeAndStatus(grade);
+        return ResponseEntity.ok(attendanceCounts);
+    }
+
+    //To return the present status of given student
+     @GetMapping("/studentAttendance")
+     public ResponseEntity<Attendance> getStudentAttendance(@RequestParam int studentId) {
+        Attendance attendance = attendanceService.getStudentAttendance(studentId);
+        if (attendance != null) {
+            return ResponseEntity.ok(attendance);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
 >>>>>>> Stashed changes
