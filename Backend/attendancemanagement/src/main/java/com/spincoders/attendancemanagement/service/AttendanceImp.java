@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -46,6 +47,26 @@ public class AttendanceImp implements AttendanceService{
     @Override
     public Attendence getAById(int fatherId) {
         return null;
+    }
+
+    @Override
+    public Long findAllDays(int studentID, int year) {
+        return attendancerepo.findAllDays(studentID,year);
+    }
+
+    @Override
+    public Integer findAllAbsentDays(int studentID, int year) {
+        return attendancerepo.findAllAbsentDays(studentID,year);
+    }
+
+    @Override
+    public Boolean todatAttendence(int studentID, int year, int month, int date) {
+        return attendancerepo.findToday(studentID,year,month,date);
+    }
+
+    @Override
+    public List<String> findAbsMonth(int studentID, int year) {
+        return attendancerepo.findByMonth(studentID,year);
     }
 
 

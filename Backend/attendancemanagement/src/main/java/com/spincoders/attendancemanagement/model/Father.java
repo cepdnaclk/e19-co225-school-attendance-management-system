@@ -1,5 +1,7 @@
 package com.spincoders.attendancemanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -30,6 +32,7 @@ public class Father {
     // Father-Student (One-One)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "studnetID")
+    @JsonBackReference
     private Student student;
 
     public Father() {
