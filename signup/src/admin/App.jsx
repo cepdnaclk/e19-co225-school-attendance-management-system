@@ -15,6 +15,9 @@ import theme from './config/theme';
 import { BrowserRouter } from 'react-router-dom';
 import Dashboard from './containers/Dashboard';
 
+import AppRoutes from './router/AppRoutes';
+
+
 
 function App() {
   return (
@@ -25,6 +28,7 @@ function App() {
 
           <AppHeader />
           <Box sx={styles.container}>
+          
             
             <SideNav />
             <Dashboard/>

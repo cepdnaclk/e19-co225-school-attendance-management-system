@@ -12,7 +12,7 @@ function Dashboard() {
                 <CardContent>
                     <Typography variant="cardTitle">Latest post</Typography>
                     <Box sx={styles.postAuthorSection}>
-                        <Avatar sx={styles.avatar} alt="Masoud" src="src/assets/avatars/masoud.jpeg" />
+                        <Avatar sx={styles.avatar} alt="Masoud" src="../assets/avatars/masoud.jpeg" />
                         <Typography sx={styles.postMeta}>React with Masoud</Typography>
                         <Typography sx={styles.postMeta}>Jan 19, 2023</Typography>
                     </Box>
@@ -89,13 +89,13 @@ function Dashboard() {
                         <Box
                             component="img"
                             sx={styles.videoThumbnail}
-                            src="src/assets/thumbnail.png"
+                            src="../assets/thumbnail.png"
                         />
 
                     </Box>
                     <Divider sx={styles.divider} />
                     <Box sx={styles.commentRow}>
-                        <Avatar sx={styles.avatar} alt="Masoud" src="src/assets/avatars/masoud.jpeg" />
+                        <Avatar sx={styles.avatar} alt="Masoud" src="../assets/avatars/masoud.jpeg" />
 
                         <Box>
                             <Box sx={styles.commentDetailsSection}>
@@ -110,13 +110,13 @@ function Dashboard() {
                         <Box
                             component="img"
                             sx={styles.videoThumbnail}
-                            src="src/assets/thumbnail.png"
+                            src="../assets/thumbnail.png"
                         />
 
                     </Box>
                     <Divider sx={styles.divider} />
                     <Box sx={styles.commentRow}>
-                        <Avatar sx={styles.avatar} alt="Masoud" src="src/assets/avatars/masoud.jpeg" />
+                        <Avatar sx={styles.avatar} alt="Masoud" src="../assets/avatars/masoud.jpeg" />
                         <Box>
                             <Box sx={styles.commentDetailsSection}>
                                 <Typography sx={styles.postMeta}>React with Masoud</Typography>
@@ -131,7 +131,7 @@ function Dashboard() {
                         <Box
                             component="img"
                             sx={styles.videoThumbnail}
-                            src="src/assets/thumbnail.png"
+                            src="../assets/thumbnail.png"
                         />
 
                     </Box>
@@ -154,7 +154,7 @@ function Dashboard() {
                     <Box
                         component="img"
                         sx={styles.ideaImage}
-                        src="src/assets/study-icon.png"
+                        src="../assets/study-icon.png"
                     />
                 </CardContent>
             </Card>
@@ -166,7 +166,7 @@ function Dashboard() {
                         <Box
                             component="img"
                             sx={styles.insiderImage}
-                            src="src/assets/thumbnail2.png"
+                            src="../assets/thumbnail2.png"
                         />
                         <Typography sx={styles.ideaQuestion}>Ready to boost your skills using AI tools?</Typography>
                         <Typography variant="h7">
