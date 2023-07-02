@@ -44,7 +44,7 @@
 }
 
 
-body {
+.appbody {
   position: fixed;
   top: 0;
   left: 0;
@@ -83,7 +83,7 @@ p {
   padding: 25px;
 }
 
-.btn {
+.homebtn {
   background-color: #333;
   color: #fff;
   border: none;
@@ -97,7 +97,7 @@ p {
   text-decoration: none;
   
 }
-.btn1 {
+.homebtn1 {
   background-color: #333;
   color: #fff;
   border: none;
@@ -111,7 +111,7 @@ p {
   text-decoration: none;
   
 }
-.btn2 {
+.homebtn2 {
   background-color: #333;
   color: #fff;
   border: none;
@@ -125,7 +125,7 @@ p {
   text-decoration: none;
   
 }
-.btn3 {
+.homebtn3 {
   background-color: #333;
   color: #fff;
   border: none;
@@ -140,15 +140,15 @@ p {
   
 }
 
-.button-group {
+.homebutton-group {
   display: flex;
   justify-content: center;
   margin-bottom: 80px;
 }
-.btn,
-.btn1,
-.btn2,
-.btn3 {
+.homebtn,
+.homebtn1,
+.homebtn2,
+.homebtn3 {
   background-color: #280913a4;
   color: #fff;
   border: none;
@@ -169,9 +169,9 @@ p {
   background-color: #555;
 }
 
-.button-image {
+.homebutton-image {
   object-fit: cover;
-  height: 150px; /* Adjust the height as needed */
+  height: 100px; /* Adjust the height as needed */
   object-position: center center;
   margin-bottom: 10px; /* Adjust the margin as needed */
 }
@@ -183,7 +183,7 @@ p {
 }
 
 .calendar-container {
-  width: 300px;
+  width: 400px;
   margin: 6 auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -202,5 +202,28 @@ h2 {
   background-color: rgba(41, 76, 192, 0.763);
   color: black;
   font-weight: bold;
+}
+
+.graphdiv {
+ 
+  background-color: rgba(247, 241, 246, 0.6);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  
+  
+}
+.ViewStatusApp {
+  
+  background-attachment: fixed;
+  color: #0e0d0d;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  padding-left: 20px;
+  
+  
 }
 

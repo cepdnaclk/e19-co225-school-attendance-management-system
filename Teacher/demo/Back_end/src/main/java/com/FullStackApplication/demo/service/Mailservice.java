@@ -1,7 +1,7 @@
 package com.FullStackApplication.demo.service;
 
-import com.FullStackApplication.demo.model.User;
-import com.FullStackApplication.demo.repository.UserRepository;
+import com.FullStackApplication.demo.model.Attendee;
+import com.FullStackApplication.demo.repository.AttendeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -15,15 +15,15 @@ public class Mailservice {
     private JavaMailSender mailSender;
 
     @Autowired
-    private UserRepository userRepository;
+    private AttendeeRepository attendeeRepository;
 
 //    public void sendMailToAll() {
-//        List<User> users = userRepository.findAll();
+//        List<Attendee> attendees = attendeeRepository.findAll();
 //
-//        for(User user: users){
-//            String to = user.getEmail();
+//        for(Attendee attendee: attendees){
+//            String to = attendee.getEmail();
 //            String subject = "Daily attendance";
-//            String text = user.getName()+" is "+ user.getMarkAttendance() + " " + user.getTimestamp();
+//            String text = attendee.getName()+" is "+ attendee.getMarkAttendance() + " " + attendee.getTimestamp();
 //
 //            SimpleMailMessage message = new SimpleMailMessage();
 //            message.setFrom("testprojectspringboot@gmail.com");
@@ -40,10 +40,10 @@ public class Mailservice {
 //    public void handleButtonClick(){
 //        sendMailToAll();
 //    }
-    public void sendMailToUser(User user) {
-        String to = user.getEmail();
+    public void sendMailToAttendee(Attendee attendee) {
+        String to = attendee.getEmail();
         String subject = "Daily attendance";
-        String text = user.getName() + " is " + user.getMarkAttendance() + " " + user.getTimestamp();
+        String text = attendee.getName() + " is " + attendee.getMarkAttendance() + " on  " + attendee.getTimestamp();
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("testprojectspringboot@gmail.com");
@@ -53,16 +53,16 @@ public class Mailservice {
 
         mailSender.send(message);
 
-        System.out.println("Mail sent successfully to user: " + user.getName());
+        System.out.println("Mail sent successfully to attendee: " + attendee.getName());
     }
 
-    public void handleButtonClick(Long userId) {
-        User user = userRepository.findById(userId).orElse(null);
+    public void handleButtonClick(Long attendeeId) {
+        Attendee attendee = attendeeRepository.findById(attendeeId).orElse(null);
 
-        if (user != null) {
-            sendMailToUser(user);
+        if (attendee != null) {
+            sendMailToAttendee(attendee);
         } else {
-            System.out.println("User with ID: " + userId + " not found");
+            System.out.println("Attendee with ID: " + attendeeId + " not found");
         }
     }
 

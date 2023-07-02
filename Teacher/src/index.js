@@ -3,15 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import AddStudent  from './Pages/AddStudent'
+//import AddStudent  from './Pages/AddStudent'
 import MarkAttendance  from './Pages/MarkAttendance'
-import Parent from './Pages/Parent'
+import AddStudent  from './Pages/src/App'
+import Parent from './Pages/ParentApp'
 import View from './Pages/ViewStatus'
+import AddUser from './Pages/src/users/AddUser';
+import EditUser from './Pages/src/users/EditUser';
+import MarkAtt from './Pages/MarkAttSrc/App';
+
 //npm install react-router-dom
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import NotificationApp from './Pages/NotificationApp';
 
 const router = createBrowserRouter([
   {
@@ -19,12 +25,8 @@ const router = createBrowserRouter([
     element: <App/>,
   },
   {
-    path: "addstudent",
+    path: "/student",
     element: <AddStudent/>,
-  },
-  {
-    path: "markattendance",
-    element: <MarkAttendance/>,
   },
   {
     path: "parent",
@@ -33,7 +35,20 @@ const router = createBrowserRouter([
   {
     path: "viewstatus",
     element: <View/>,
+  },{
+    path:"/addstudent",
+    element:<AddUser/>,
+  },{
+    path:"/editstudent/:id",
+    element:<EditUser/>,
+  },{
+    path:"/notificationpage",
+    element:<NotificationApp />,
+  },{
+    path: "/markattendance",
+    element:<MarkAtt />
   }
+  
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
   root.render(

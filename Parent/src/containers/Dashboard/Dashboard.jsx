@@ -1,22 +1,103 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Card, CardContent, Typography, CircularProgress, Box, Grid } from '@mui/material';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const attendanceData = [
+/*const attendanceData = [
   { month: 'Jan', attendance: 80 },
   { month: 'Feb', attendance: 90 },
   { month: 'Mar', attendance: 70 },
   { month: 'Apr', attendance: 85 },
   { month: 'May', attendance: 95 },
   { month: 'Jun', attendance: 75 },
-];
+];*/
+
 
 export default function AttendanceCard() {
-  const totalDays = 180; // Total academic days
+  //const totalDays = 180;
   const absentDays = [8, 10, 17, 24]; // Array of days the student was absent this month
-  const today = new Date().getDate(); // Get the current day
+
+    // Get the current day
+    const currentDate = new Date();
+
+    const thisDay = currentDate.getDate();
+    const thisMonth = currentDate.getMonth() + 1; // Note: month is zero-based, so we add 1 to get the actual month
+    const thisYear = currentDate.getFullYear();
+    //console.log(thisYear,thisMonth, thisDay);
+
+    const studentID = localStorage.getItem('studentID') || 7;
+    const year = 2022; // Replace with the desired value
+
+    // Total academic days
+    const [totalDays, setTotalDays] = useState(0);
+    const [totalAbsentDays, setTotalAbsentDays] = useState(0);
+    const [todayAttendance, setToday] = useState(false);
+
+    const [attendanceData, setAttendanceData] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:8080/attendance/getByMonth/${studentID}/${year}`)
+            .then((res) => res.json())
+            .then((result) => {
+                const formattedData = result.map((item) => {
+                    const [month, attendance] = item.split(',');
+
+                    // Convert month number to month name
+                    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                    const monthName = monthNames[parseInt(month) - 1];
+
+                    return { month: monthName, attendance: parseInt(attendance) };
+                });
+
+                setAttendanceData(formattedData);
+            })
+            .catch((error) => {
+                console.error('Error fetching attendance data:', error);
+            });
+    }, [studentID, year]);
+
+    useEffect(() => {
+        if (studentID) {
+            fetch(`http://localhost:8080/attendance/getAllDays/${studentID}/${year}`)
+                .then((res) => res.json())
+                .then((result) => {
+                    setTotalDays(result);
+                    console.log(result)
+                })
+                .catch((error) => {
+                    console.error('Error fetching total days:', error);
+                });
+        }
+    }, [studentID, year]);
+
+    useEffect(() => {
+        if (studentID) {
+            fetch(`http://localhost:8080/attendance/getAllAbsentDays/${studentID}/${year}`)
+                .then((res) => res.json())
+                .then((result) => {
+                    setTotalAbsentDays(result);
+                    console.log(result)
+                })
+                .catch((error) => {
+                    console.error('Error fetching total days:', error);
+                });
+        }
+    }, [studentID, year]);
+
+    useEffect(() => {
+        if (studentID) {
+            fetch(`http://localhost:8080/attendance/getToday/${studentID}/${thisYear}/${thisMonth}/${thisDay}`)
+                .then((res) => res.json())
+                .then((result) => {
+                    setToday(result);
+                    console.log(result)
+                })
+                .catch((error) => {
+                    console.error('Error fetching total days:', error);
+                });
+        }
+    }, [studentID, thisYear, thisMonth, thisDay]);
 
   const getPresentDays = () => {
     const presentDays = [];
@@ -37,7 +118,7 @@ export default function AttendanceCard() {
   };
 
   const isPresentToday = () => {
-    return !absentDays.includes(today);
+    return !absentDays.includes(todayAttendance);
   };
 
   return (
@@ -108,16 +189,16 @@ export default function AttendanceCard() {
         >
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              Attendance Summary
+              Attendance Summary for this year
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Total Days: {totalDays}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Absent Days: {absentDays.length}
+              Absent Days: {totalAbsentDays}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Present Days: {getPresentDays().length}
+              Present Days: {totalDays - totalAbsentDays}
             </Typography>
             <Box
               sx={{
