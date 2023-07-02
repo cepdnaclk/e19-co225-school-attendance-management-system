@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Paper, Avatar, TextField, Button, Typography, Link } from '@material-ui/core'
+import { Grid, Paper, Avatar, TextField, Button, Typography, Link, RadioGroup, Radio } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -14,11 +14,13 @@ const Login = ({ handleChange }) => {
     const initialValues = {
         username: '',
         password: '',
-        remember: false
+        remember: false,
+        role: ''
     }
     const validationSchema = Yup.object().shape({
         username: Yup.string().email('please enter valid email').required("Required"),
-        password: Yup.string().required("Required")
+        password: Yup.string().required("Required"),
+        role: Yup.string().required("Required")
     })
     const onSubmit = (values, props) => {
         console.log(values)
@@ -45,6 +47,20 @@ const Login = ({ handleChange }) => {
                             <Field as={TextField} label='Password' name="password"
                                 placeholder='Enter password' type='password' fullWidth required
                                 helperText={<ErrorMessage name="password" />} />
+
+                            <Field as={RadioGroup} name="role">
+                                <FormControlLabel
+                                    value="admin"
+                                    control={<Radio color="primary" />}
+                                    label="Sign in as Admin"  // Updated label for Admin
+                                />
+                                <FormControlLabel
+                                    value="parent"
+                                    control={<Radio color="primary" />}
+                                    label="Sign in as a Parent" // Updated label for Parent
+                                />
+                            </Field>
+
                             <Field as={FormControlLabel}
                                 name='remember'
                                 control={
@@ -63,12 +79,12 @@ const Login = ({ handleChange }) => {
                 <Typography >
                     <Link href="#" >
                         Forgot password ?
-                </Link>
+                    </Link>
                 </Typography>
                 <Typography > Do you have an account ?
                      <Link href="#" onClick={() => handleChange("event", 1)} >
                         Sign Up
-                </Link>
+                    </Link>
                 </Typography>
             </Paper>
         </Grid>
