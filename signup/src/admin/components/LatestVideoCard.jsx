@@ -1,30 +1,26 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
+import schoollogo from '../assets/school.jpg'
 
 function LatestVideoCard(props) {
     return (<Card {...props}>
         <CardContent>
             <Typography variant="cardTitle">Total School Attendance</Typography>
             <Box sx={styles.latestVideoContainer} >
-                <Box sx={styles.latestVideoThumbnail} component={'img'} src={'src/assets/thumbnail.png'} />
-                <Typography sx={styles.latestVideoTitle}>ReactJs SearchBar in 5 Minutes!</Typography>
+                <Box sx={styles.latestVideoThumbnail} component={'img'} src={schoollogo} />
+                <br/>
             </Box>
-            <Typography variant="h7" sx={styles.latestVideoTimeLabel}>First 6 hours:</Typography>
-            <Box sx={styles.latestVideoStatsRow}>
-                <Typography variant="h7">Views</Typography>
-                <Typography variant="h7">225</Typography>
+            <Box>
+                <Typography variant="h6">Student Attendance count = </Typography>
             </Box>
-            <Box sx={styles.latestVideoStatsRow}>
-                <Typography variant="h7">Watch Time</Typography>
-                <Typography variant="h7">30</Typography>
+            <Box>
+                <Typography variant="h6">Absent Count = </Typography>
             </Box>
-            <Box sx={styles.latestVideoStatsRow}>
-                <Typography variant="h7">Likes</Typography>
-                <Typography variant="h7">23</Typography>
+            <Box>
+                <Typography variant="h6">Total Student = </Typography>
             </Box>
-
-            
-            <Typography sx={styles.cardAction} variant="link">GO TO VIDEO ANALYTICS</Typography>
-            <Typography sx={styles.cardAction} variant="link">SEE COMMENTS(12)</Typography>
+            <Box>
+                <Typography variant="h6">Today Attendance percentage = </Typography>
+            </Box>
 
         </CardContent>
     </Card>);
@@ -45,7 +41,7 @@ const styles = {
     latestVideoThumbnail: {
         width: '100%',
         mt: 1,
-        filter: "brightness(20%)",
+        filter: "brightness(80%)",
         display: 'block'
     },
     latestVideoTitle: {
