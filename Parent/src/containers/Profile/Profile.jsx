@@ -46,13 +46,14 @@ const ProfilePage = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
-<<<<<<< Updated upstream
     name: '',
     email: '',
     mobile: '',
     job: '',
     student: '',
     fatherID: '',
+    motherID: '',
+    guardianID: '',
     imagelink: '',
     studentWeight: '',
     studentClassroom: '',
@@ -63,48 +64,15 @@ const ProfilePage = () => {
     studentMobile: ''
   });
 
-  const storedEmail = localStorage.getItem('fatherEmail') || 'mother1@example.com';
-  const [relationship, setRelationship] = useState('');
-
-  const fetchFatherDetails = async () => {
-    try {
-      const response = await fetch(`http://localhost:8080/father/getbyemail/${storedEmail}`);
-      if (response.ok) {
-        const father = await response.json();
-        setFormData(father); // Update the state directly with the fetched data
-        setRelationship('Father');
-=======
-<<<<<<< HEAD
-    fullName: '',
-    phoneNumber: '',
-    emailAddress: '',
+  const [updatedFather, setUpdatedFather] = useState({
+    name: '',
     address: '',
-  });
-
-  const fetchFatherDetails = async () => {
-    try {
-      const response = await fetch('http://localhost:8080/father/getbyemail/father1@example.com');
-      if (response.ok) {
-        const father = await response.json();
-        setFormData(father); // Update the state directly with the fetched data
-=======
-    name: '',
-    email: '',
     mobile: '',
     job: '',
-    student: '',
-    fatherID: '',
-    imagelink: '',
-    studentWeight: '',
-    studentClassroom: '',
-    studentName: '',
-    studentAddress: '',
-    studentHeight: '',
-    studentID: '',
-    studentMobile: ''
   });
 
-  const storedEmail = localStorage.getItem('fatherEmail') || 'mother1@example.com';
+
+  const storedEmail = localStorage.getItem('fatherEmail') || 'father2new@example.com';
   const [relationship, setRelationship] = useState('');
 
   const fetchFatherDetails = async () => {
@@ -114,8 +82,6 @@ const ProfilePage = () => {
         const father = await response.json();
         setFormData(father); // Update the state directly with the fetched data
         setRelationship('Father');
->>>>>>> 9d2132380e090c70ae27618294e46c2c24f317ea
->>>>>>> Stashed changes
       }
     } catch (error) {
       console.error('Error fetching father details:', error);
@@ -150,11 +116,6 @@ const ProfilePage = () => {
 
   useEffect(() => {
     fetchFatherDetails();
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
   }, []);
 
   useEffect(() => {
@@ -163,10 +124,6 @@ const ProfilePage = () => {
 
   useEffect(() => {
     fetchGuardianDetails();
-<<<<<<< Updated upstream
-=======
->>>>>>> 9d2132380e090c70ae27618294e46c2c24f317ea
->>>>>>> Stashed changes
   }, []);
 
   const handleOpen = () => {
@@ -180,9 +137,42 @@ const ProfilePage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform form submission logic here
-    console.log(formData); // Example: Log the form data to the console
-    handleClose(); // Close the dialog after submitting
+
+    let apiUrl = '';
+
+    if (relationship === 'Father') {
+      apiUrl = `http://localhost:8080/father/${formData.fatherID}`;
+    } else if (relationship === 'Mother') {
+      apiUrl = `http://localhost:8080/mother/${formData.motherID}`;
+    } else if (relationship === 'Guardian') {
+      apiUrl = `http://localhost:8080/guardian/${formData.guardianID}`;
+    }
+
+
+    console.log(updatedFather); // Example: Log the updated father details to the console
+    // Make an API call to update the father details
+    fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedFather),
+    })
+        .then((res) => {
+          if (res.ok) {
+            // Update the father details in the state or perform any necessary actions
+            console.log('Father details updated successfully');
+          } else {
+            console.error('Error updating father details');
+          }
+          handleClose(); // Close the dialog after submitting
+        })
+        .catch((error) => {
+          console.error('Error updating father details:', error);
+          handleClose(); // Close the dialog after submitting (even if there was an error)
+        });
   };
+
 
   return (
       <div className={classes.root}>
@@ -231,51 +221,6 @@ const ProfilePage = () => {
           </Grid>
         </Grid>
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-        <Grid item xs={12}>
-          <div className={classes.studentBox}>
-            <Typography variant="h4" gutterBottom>
-              Student Information
-            </Typography>
-            <Typography variant="body1">(ren) Name(s): Jane Doe, John Doe Jr.</Typography>
-            <Typography variant="body1">Grade/Class: 5th Grade, 2nd Grade</Typography>
-            <Typography variant="body1">Student ID(s): 12345, 67890</Typography>
-          </div>
-        </Grid>
-
-        <Grid item xs={12}>
-          <div className={classes.studentBox}>
-            <Typography variant="h4" gutterBottom>
-              Relationship to the Student
-            </Typography>
-            <Typography variant="body1">Relationship: Father</Typography>
-          </div>
-        </Grid>
-
-        <Grid item xs={12}>
-          <Button variant="contained" color="primary" onClick={handleOpen}>
-            Edit Details
-          </Button>
-        </Grid>
-      </Grid>
-
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Edit Details</DialogTitle>
-        <DialogContent>
-          <form onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  label="Full Name"
-                  variant="outlined"
-                  fullWidth
-                  value={formData.fullName}
-                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                />
-=======
->>>>>>> Stashed changes
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Edit Details</DialogTitle>
           <DialogContent>
@@ -286,8 +231,8 @@ const ProfilePage = () => {
                       label="Full Name"
                       variant="outlined"
                       fullWidth
-                      value={formData.fullName}
-                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      value={updatedFather.name}
+                      onChange={(e) => setUpdatedFather({ ...updatedFather, name: e.target.value })}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -295,17 +240,8 @@ const ProfilePage = () => {
                       label="Phone Number"
                       variant="outlined"
                       fullWidth
-                      value={formData.phoneNumber}
-                      onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                      label="Email Address"
-                      variant="outlined"
-                      fullWidth
-                      value={formData.emailAddress}
-                      onChange={(e) => setFormData({ ...formData, emailAddress: e.target.value })}
+                      value={updatedFather.mobile}
+                      onChange={(e) => setUpdatedFather({ ...updatedFather, mobile: e.target.value })}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -313,8 +249,17 @@ const ProfilePage = () => {
                       label="Address"
                       variant="outlined"
                       fullWidth
-                      value={formData.address}
-                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                      value={updatedFather.address}
+                      onChange={(e) => setUpdatedFather({ ...updatedFather, address: e.target.value })}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                      label="Job"
+                      variant="outlined"
+                      fullWidth
+                      value={updatedFather.job}
+                      onChange={(e) => setUpdatedFather({ ...updatedFather, job: e.target.value })}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -322,10 +267,6 @@ const ProfilePage = () => {
                     Save
                   </Button>
                 </Grid>
-<<<<<<< Updated upstream
-=======
->>>>>>> 9d2132380e090c70ae27618294e46c2c24f317ea
->>>>>>> Stashed changes
               </Grid>
             </form>
           </DialogContent>
