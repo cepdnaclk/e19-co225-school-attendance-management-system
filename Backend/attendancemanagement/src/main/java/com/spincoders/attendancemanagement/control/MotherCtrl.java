@@ -40,7 +40,7 @@ public class MotherCtrl {
         Mother mother = motherService.findByEmail(email);
         if (mother != null) {
             Map<String, Object> response = new HashMap<>();
-            response.put("fatherID", mother.getMotherID());
+            response.put("motherID", mother.getMotherID());
             response.put("name", mother.getName());
             response.put("password", mother.getPassword());
             response.put("email", mother.getEmail());

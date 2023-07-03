@@ -28,4 +28,12 @@ public interface AttendanceService {
 
     public List<String> findAbsMonth(int studentID, int year);
 
+    public void updateAbsentNote(int id, Attendence attendence);
+
+    public Integer findAllStudentAbsent();
+
+    public Integer findAllStudentPresence();
+
+    public List<String> findMonthAbsence(int year);
+
 }

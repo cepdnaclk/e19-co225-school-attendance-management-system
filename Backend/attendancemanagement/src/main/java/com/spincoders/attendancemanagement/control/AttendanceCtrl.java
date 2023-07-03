@@ -103,4 +103,40 @@ public class AttendanceCtrl {
         }
     }
 
+    @PutMapping("/updateNote/{id}")
+    public ResponseEntity<?> updateAbsentNote(@PathVariable int id, @RequestBody Attendence attendence) {
+        attendanceService.updateAbsentNote(id, attendence);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/getAllStudentAbsent")
+    public ResponseEntity<Integer> getAllStudentAbsent() {
+        Integer user = attendanceService.findAllStudentAbsent();
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/getAllStudentPresence")
+    public ResponseEntity<Integer> getAllStudentPresence() {
+        Integer user = attendanceService.findAllStudentPresence();
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/getMonthAbsence/{year}")
+    public ResponseEntity<List<String>> getAbsenceMonth(@PathVariable int year) {
+        List<String> user = attendanceService.findMonthAbsence(year);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

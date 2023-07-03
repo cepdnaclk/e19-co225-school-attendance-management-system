@@ -35,4 +35,13 @@ public interface Attendancerepo extends JpaRepository<Attendence, Integer> {
     @Query("SELECT u.month,COUNT(u) as absent_count FROM Attendence u WHERE u.studentID = :studentid and u.year = :year and u.presence = false group by u.month")
     List<String> findByMonth(@Param("studentid") int studentid, @Param("year") int year);
 
+    @Query("SELECT COUNT(u) FROM Attendence u WHERE  u.presence = false ")
+    Integer findAllStudentAbsent();
+
+    @Query("SELECT COUNT(u) FROM Attendence u WHERE  u.presence = true ")
+    Integer findAllStudentPresence();
+
+    @Query("SELECT u.month,COUNT(u) as absent_count FROM Attendence u WHERE  u.year = :year and u.presence = false group by u.month")
+    List<String> findMonthAbsence(@Param("year") int year);
+
 }

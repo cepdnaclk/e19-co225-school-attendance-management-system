@@ -69,5 +69,29 @@ public class AttendanceImp implements AttendanceService{
         return attendancerepo.findByMonth(studentID,year);
     }
 
+    @Override
+    public void updateAbsentNote(int id, Attendence attendence) {
+        Attendence existingAttendence = attendancerepo.findById(id).orElse(null);
+        if (existingAttendence != null) {
+            existingAttendence.setNote(attendence.getNote());
+            attendancerepo.save(existingAttendence);
+        }
+    }
+
+    @Override
+    public Integer findAllStudentAbsent() {
+        return attendancerepo.findAllStudentAbsent();
+    }
+
+    @Override
+    public Integer findAllStudentPresence() {
+        return attendancerepo.findAllStudentPresence();
+    }
+
+    @Override
+    public List<String> findMonthAbsence(int year) {
+        return attendancerepo.findMonthAbsence(year);
+    }
+
 
 }
