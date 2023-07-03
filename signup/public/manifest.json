@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "Squab Productivity App",
   "short_name": "Squab",
@@ -18,3 +19,25 @@
   "background_color": "#ffffff",
   "display": "standalone"
 }
+=======
+{
+  "name": "Squab Productivity App",
+  "short_name": "Squab",
+  "start_url": ".",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
+>>>>>>> b4244ceba429206da30718c5b186972bbafcca9b

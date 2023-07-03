@@ -4,7 +4,10 @@ import TextField from '@mui/material/TextField';
 import {Container, Paper, Button} from "@mui/material";
 import {useEffect, useState} from "react";
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> b4244ceba429206da30718c5b186972bbafcca9b
 export default function Student() {
     const paperStyle = {padding:'50px 20px',width:"500",margin:"20px auto"};
 

@@ -7,7 +7,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useProSidebar } from "react-pro-sidebar";
 import { Height } from "@mui/icons-material";
 
+<<<<<<< HEAD
+=======
 import applogo from '../assets/sample-logo.png'
+>>>>>>> b4244ceba429206da30718c5b186972bbafcca9b
 function AppHeader() {
 
     const { collapseSidebar, toggleSidebar, collapsed, broken } = useProSidebar();
@@ -20,7 +23,11 @@ function AppHeader() {
             <Box
                 component={'img'}
                 sx={styles.appLogo}
+<<<<<<< HEAD
+                src="/src/assets/sample-logo.png" />
+=======
                 src={applogo} />
+>>>>>>> b4244ceba429206da30718c5b186972bbafcca9b
             <Box
                 sx={{ flexGrow: 1 }} />
             <IconButton title="Notifications" color="secondary">

@@ -7,7 +7,7 @@ import { Settings } from "@mui/icons-material";
 import { useProSidebar } from "react-pro-sidebar";
 
 function AppHeader(){
-     
+    const { collapseSidebar, toggleSidebar, collapsed, broken } = useProSidebar();
     return(
         <AppBar position="sticky" sx={styles.appBar}>
             <Toolbar>

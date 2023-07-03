@@ -1,53 +1,258 @@
+<<<<<<< HEAD
 import { Avatar, Box, Card, CardContent, Divider, Typography } from "@mui/material";
 import ColorText from "../components/ColorText";
 import LatestVideoCard from "../components/LatestVideoCard";
-import Chart from '../components/chart';
-import masoud from '../assets/avatars/masoud.jpeg';
 
 function Dashboard() {
     return <Box>
-        <br/>
         <Typography sx={styles.pageTitle} variant="h5">School Management System</Typography>
         <Box sx={styles.columnsContainer}>
 
             <LatestVideoCard sx={styles.item} />
             <Card sx={styles.item}>
                 <CardContent>
-                <Box sx={styles.postAuthorSection}>
-                        <Avatar sx={styles.avatar} alt="Masoud" src={masoud} />
-                        <Typography sx={styles.postMeta}>Have a nice Day</Typography>
+                    <Typography variant="cardTitle">Latest post</Typography>
+                    <Box sx={styles.postAuthorSection}>
+                        <Avatar sx={styles.avatar} alt="Masoud" src="../assets/avatars/masoud.jpeg" />
+                        <Typography sx={styles.postMeta}>React with Masoud</Typography>
                         <Typography sx={styles.postMeta}>Jan 19, 2023</Typography>
                     </Box>
-
-                    <Typography variant="cardTitle">Vision</Typography>
-                    <br/>
-                    <Typography variant="body2"> Be a leading educational institution that empowers students to become lifelong learners, critical thinkers, and compassionate global citizens. Through innovative teaching practices, personalized learning experiences, and strong community partnerships, we strive to nurture the intellectual, social, and emotional growth of every student.</Typography>
+                    <Typography variant="body2">I asked chatGPT to tell me a joke about react js, he is not only smart but also funny :)) we are going to have a video about it tomorrow.</Typography>
                     <Divider sx={styles.divider} />
-                    
-                    <Typography variant="cardTitle">Mission</Typography>
-                    <br/>
-                    <Typography variant="body2"> Create a dynamic and inclusive learning environment where every student feels valued, supported, and inspired to reach their full potential. We are committed to fostering a culture of excellence, equity, and collaboration, providing high-quality education that prepares students for success in an ever-changing world.</Typography>
+                    <Box sx={styles.postStats}>
+                        <Typography variant="body2">Likes</Typography>
+                        <Typography variant="body2">Comments</Typography>
+                        <Typography variant="h6">12</Typography>
+                        <Typography variant="h6">6</Typography>
+                    </Box>
 
-                    
+                    <Typography sx={styles.cardAction} variant="link">GO TO COMMUNITY TAB</Typography>
                 </CardContent>
             </Card>
 
             <Card sx={styles.item}>
                 <CardContent>
-                    <Typography variant="cardTitle">Attendance Chart</Typography>
-                    <Chart />
-                    
+                    <Typography variant="cardTitle">Channel analytics</Typography>
+                    <Typography variant="h7">Current Subscribers</Typography>
+                    <Typography variant="h4">4,144</Typography>
+                    <Typography variant="h7"><ColorText color='green.main'>+77</ColorText> <ColorText color='neutral.normal'>in last 28 days</ColorText></Typography>
+                    <Divider sx={styles.divider} />
+                    <Typography variant="h6">Summary</Typography>
+                    <Typography variant="h8"><ColorText color='neutral.normal'>Last 28 days</ColorText></Typography>
+                    <Box sx={styles.videoStatsRow}>
+                        <Typography variant="h7">Views</Typography>
+                        <Typography variant="h7">225</Typography>
+                    </Box>
+                    <Box sx={styles.videoStatsRow}>
+                        <Typography variant="h7">Watch Time (hours)</Typography>
+                        <Typography variant="h7">30</Typography>
+                    </Box>
+                    <Box sx={styles.videoStatsRow}>
+                        <Typography variant="h7">Estimated Revenue</Typography>
+                        <Typography variant="h7">$450.00</Typography>
+                    </Box>
+                    <Divider sx={styles.divider} />
+                    <Typography variant="h6">Top videos</Typography>
+                    <Typography variant="h8"><ColorText color='neutral.normal'>Last 48 hours . Views</ColorText></Typography>
+                    <Box sx={styles.videoStatsRow}>
+                        <Typography variant="h7">How to become a software developer in 2023</Typography>
+                        <Typography variant="h7">450</Typography>
+                    </Box>
+                    <Box sx={styles.videoStatsRow}>
+                        <Typography variant="h7">CSS GRID Tutorial: How to use Grids to make awesome user interface.</Typography>
+                        <Typography variant="h7">287</Typography>
+                    </Box>
+                    <Box sx={styles.videoStatsRow}>
+                        <Typography variant="h7">Call APIS in React Native: Practical Guide</Typography>
+                        <Typography variant="h7">130</Typography>
+                    </Box>
+
+                    <Typography sx={styles.cardAction} variant="link">GO TO VIDEO ANALYTICS</Typography>
                 </CardContent>
             </Card>
-            
-            
+            <Card sx={styles.item}>
+                <CardContent>
+                    <Typography variant="cardTitle">Latest comments</Typography>
+                    <ColorText color="neutral.normal"><Typography variant="h7">Channel comments I haven't responded to</Typography></ColorText>
 
+                    <Box sx={styles.commentRow}>
+                        <Avatar sx={styles.avatar} alt="Masoud" src="src/assets/avatars/masoud.jpeg" />
+                        <Box>
+                            <Box sx={styles.commentDetailsSection}>
+                                <Typography sx={styles.postMeta}>React with Masoud</Typography>
+                                <Typography sx={styles.postMeta}>2 weeks ago</Typography>
+                            </Box>
+
+                            <Typography sx={styles.commentText}>
+                                Get tips from a successful creator on how to take a YouTube channel and turn it into a business that earns you money
+                            </Typography>
+                        </Box>
+                        <Box
+                            component="img"
+                            sx={styles.videoThumbnail}
+                            src="../assets/thumbnail.png"
+                        />
+
+                    </Box>
+                    <Divider sx={styles.divider} />
+                    <Box sx={styles.commentRow}>
+                        <Avatar sx={styles.avatar} alt="Masoud" src="../assets/avatars/masoud.jpeg" />
+
+                        <Box>
+                            <Box sx={styles.commentDetailsSection}>
+                                <Typography sx={styles.postMeta}>React with Masoud</Typography>
+                                <Typography sx={styles.postMeta}>2 weeks ago</Typography>
+                            </Box>
+
+                            <Typography sx={styles.commentText}>
+                                How can I deploy this?
+                            </Typography>
+                        </Box>
+                        <Box
+                            component="img"
+                            sx={styles.videoThumbnail}
+                            src="../assets/thumbnail.png"
+                        />
+
+                    </Box>
+                    <Divider sx={styles.divider} />
+                    <Box sx={styles.commentRow}>
+                        <Avatar sx={styles.avatar} alt="Masoud" src="../assets/avatars/masoud.jpeg" />
+                        <Box>
+                            <Box sx={styles.commentDetailsSection}>
+                                <Typography sx={styles.postMeta}>React with Masoud</Typography>
+                                <Typography sx={styles.postMeta}>2 weeks ago</Typography>
+                            </Box>
+
+                            <Typography sx={styles.commentText}>
+                                Thank you, was very helpful.
+                            </Typography>
+                        </Box>
+
+                        <Box
+                            component="img"
+                            sx={styles.videoThumbnail}
+                            src="../assets/thumbnail.png"
+                        />
+
+                    </Box>
+
+
+                    <Typography sx={styles.cardAction} variant="link">VIEW MORE</Typography>
+                </CardContent>
+            </Card>
+
+            <Card sx={styles.item}>
+                <CardContent sx={styles.ideaContent}>
+                    <Box>
+                        <Typography variant="cardTitle">Ideas for you</Typography>
+                        <Typography sx={styles.ideaQuestion}>Ready to get business savvy?</Typography>
+                        <Typography variant="h7">
+                            Get tips from a successful creator on how to take a YouTube channel and turn it into a business that earns you money
+                        </Typography>
+                        <Typography sx={styles.cardAction} variant="link">GET STARTED NOW</Typography>
+                    </Box>
+                    <Box
+                        component="img"
+                        sx={styles.ideaImage}
+                        src="../assets/study-icon.png"
+                    />
+                </CardContent>
+            </Card>
+
+            <Card sx={styles.item}>
+                <CardContent sx={styles.ideaContent}>
+                    <Box>
+                        <Typography variant="cardTitle">Creator Insider</Typography>
+                        <Box
+                            component="img"
+                            sx={styles.insiderImage}
+                            src="../assets/thumbnail2.png"
+                        />
+                        <Typography sx={styles.ideaQuestion}>Ready to boost your skills using AI tools?</Typography>
+                        <Typography variant="h7">
+                            Get tips from a successful creator on how to take a YouTube channel and turn it into a business that earns you money
+                        </Typography>
+                        <Typography sx={styles.cardAction} variant="link">WATCH ON YOUTUBE</Typography>
+                    </Box>
+                </CardContent>
+            </Card>
         </Box>
     </Box>;
+=======
+import React from "react";
+import { Avatar, Box, Card, CardContent, Divider, Typography } from "@mui/material";
+import ColorText from "../components/ColorText";
+import LatestVideoCard from "../components/LatestVideoCard";
+import Chart from '../components/chart';
+import BarChart from '../components/BarChart';
+import masoud from '../assets/avatars/masoud.jpeg';
+
+function Dashboard() {
+    return (
+        <Box sx={styles.container}>
+            <Typography sx={styles.pageTitle} variant="h5">
+                School Management System
+            </Typography>
+            <Box sx={styles.columnsContainer}>
+                <Card sx={styles.item}>
+                    <CardContent>
+                        <Box sx={styles.postAuthorSection}>
+                            <Avatar sx={styles.avatar} alt="Masoud" src={masoud} />
+                            <Typography sx={styles.postMeta}>Have a nice Day</Typography>
+                            <Typography sx={styles.postMeta}>
+                                {new Date().toLocaleDateString("en-US", {
+                                    year: "numeric",
+                                    month: "short",
+                                    day: "numeric",
+                                })}
+                            </Typography>
+                        </Box>
+
+                        <Typography variant="cardTitle">Vision</Typography>
+                        <br />
+                        <Typography variant="body2">
+                            Be a leading educational institution that empowers students to
+                            become lifelong learners, critical thinkers, and compassionate
+                            global citizens. Through innovative teaching practices,
+                            personalized learning experiences, and strong community
+                            partnerships, we strive to nurture the intellectual, social, and
+                            emotional growth of every student.
+                        </Typography>
+                        <Divider sx={styles.divider} />
+
+                        <Typography variant="cardTitle">Mission</Typography>
+                        <br />
+                        <Typography variant="body2">
+                            Create a dynamic and inclusive learning environment where every
+                            student feels valued, supported, and inspired to reach their full
+                            potential. We are committed to fostering a culture of excellence,
+                            equity, and collaboration, providing high-quality education that
+                            prepares students for success in an ever-changing world.
+                        </Typography>
+                    </CardContent>
+                </Card>
+                <LatestVideoCard sx={styles.item} />
+                <Card sx={styles.item}>
+                    <CardContent>
+                        <Typography variant="cardTitle">Attendance Chart</Typography>
+                        <Chart />
+                    </CardContent>
+                </Card>
+                <Card sx={styles.item}>
+                    <CardContent>
+                        <BarChart></BarChart>
+                    </CardContent>
+                </Card>
+            </Box>
+        </Box>
+    );
+>>>>>>> b4244ceba429206da30718c5b186972bbafcca9b
 }
 
 export default Dashboard;
 
+<<<<<<< HEAD
 /**
  * @type {import("@mui/material").SxProps}
  */
@@ -59,11 +264,29 @@ const styles = {
     columnsContainer: {
         columns: '280px 3',
         maxWidth: 1400
+=======
+const styles = {
+    container: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    pageTitle: {
+        mb: 2,
+    },
+    columnsContainer: {
+        display: "grid",
+        gridTemplateColumns: "1fr",
+        gap: "16px",
+        maxWidth: 1400,
+>>>>>>> b4244ceba429206da30718c5b186972bbafcca9b
     },
     item: {
         mb: 2,
     },
     divider: {
+<<<<<<< HEAD
         my: 2
     },
     videoStatsRow: {
@@ -135,3 +358,23 @@ const styles = {
     }
 }
 
+=======
+        my: 2,
+    },
+    postAuthorSection: {
+        display: "flex",
+        alignItems: "center",
+        my: 3,
+    },
+    postMeta: {
+        mr: 1,
+        fontSize: "0.8rem",
+        color: "neutral.normal",
+    },
+    avatar: {
+        width: "30px",
+        height: "auto",
+        marginRight: 1,
+    },
+};
+>>>>>>> b4244ceba429206da30718c5b186972bbafcca9b
