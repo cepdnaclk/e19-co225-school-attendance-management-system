@@ -1,5 +1,6 @@
 package com.spincoders.attendancemanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -26,6 +27,7 @@ public class Student {
 
     // Father-Student (One-One)
     @OneToOne(mappedBy = "student")
+    @JsonManagedReference
     private Father father;
 
     // Guardian-Student (One-One)

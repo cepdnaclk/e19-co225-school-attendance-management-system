@@ -7,11 +7,14 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MessageIcon from '@mui/icons-material/Message';
+//import { Link } from '@mui/material';
+import { Link} from 'react-router-dom';
 
 export default function Appbar() {
   return (
+    
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: 'rgba(103, 104, 107, 0.7)' }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -25,14 +28,16 @@ export default function Appbar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} textAlign={'center'}>
             School Attendance Management System
           </Typography>
-          <IconButton
-            size="large"
-            color="inherit"
-            aria-label="notifications"
-            sx={{ mr: 2 }}
-          >
-            <NotificationsIcon />
-          </IconButton>
+          <Link to="/notificationpage" >
+            <IconButton
+              size="large"
+              color="inherit"
+              aria-label="notifications"
+              sx={{ mr: 2 }}
+            >
+              <NotificationsIcon />
+            </IconButton>
+          </Link>
           <IconButton
             size="large"
             color="inherit"

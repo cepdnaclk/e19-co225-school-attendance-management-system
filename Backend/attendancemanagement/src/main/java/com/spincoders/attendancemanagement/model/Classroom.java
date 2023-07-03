@@ -14,7 +14,6 @@ public class Classroom {
     @Column(name = "ClassName")
     private String className;
 
-
     // Student-Class (Many-One)
     @OneToMany(mappedBy = "classroom", cascade = CascadeType.ALL)
     private List<Student> students = new ArrayList<>();

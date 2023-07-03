@@ -6,6 +6,10 @@ import SourceOutlinedIcon from '@mui/icons-material/SourceOutlined'; import Anal
 import { Link, useNavigate } from "react-router-dom";
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'; import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined'; import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'; import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined'; import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined';
 
+<<<<<<< HEAD
+=======
+import masoud from '../assets/avatars/masoud.jpeg'
+>>>>>>> b4244ceba429206da30718c5b186972bbafcca9b
 function SideNav() {
     const { collapsed } = useProSidebar();
     const theme = useTheme();
@@ -17,7 +21,11 @@ function SideNav() {
 
     >
         <Box sx={styles.avatarContainer}>
+<<<<<<< HEAD
             <Avatar sx={styles.avatar} alt="Masoud" src="src/assets/avatars/masoud.jpeg" />
+=======
+            <Avatar sx={styles.avatar} alt="Masoud" src={masoud} />
+>>>>>>> b4244ceba429206da30718c5b186972bbafcca9b
             {!collapsed ? <Typography variant="body2" sx={styles.yourChannel}>Adminstrator</Typography> : null}
             {!collapsed ? <Typography variant="overline">Wimalasiri P.M.A.C</Typography> : null}
         </Box>
