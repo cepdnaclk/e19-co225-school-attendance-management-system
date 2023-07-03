@@ -5,6 +5,12 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 
+import Dashboard from "./admin/App";
+import Addstudent from "./admin/containers/AddStudent";
+import Createclass from './admin/containers/CreateClasses';
+import Registration from './admin/containers/Registration';
+import Removestudent from './admin/containers/RemoveStudent'
+
 function App() {
   const [auth, setAuth] = useState(false);
   const location = useLocation();
@@ -19,12 +25,17 @@ function App() {
           path="/"
           element={
             auth ? (
-              <Home setAuth={setAuth} />
+              <Dashboard setAuth={setAuth} />
             ) : (
               <Navigate to="/login" state={{ from: location }} replace />
             )
           }
         />
+        <Route path="addstudent" element={<Addstudent />} />
+        <Route path="createclasses" element={<Createclass />} />
+        <Route path="registration" element={<Registration />} />
+        <Route path="removestudent" element={<Removestudent />} />  
+  
       </Routes>
     </>
   );
