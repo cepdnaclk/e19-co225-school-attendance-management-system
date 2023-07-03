@@ -52,6 +52,8 @@ const ProfilePage = () => {
     job: '',
     student: '',
     fatherID: '',
+    motherID: '',
+    guardianID: '',
     imagelink: '',
     studentWeight: '',
     studentClassroom: '',
@@ -62,7 +64,15 @@ const ProfilePage = () => {
     studentMobile: ''
   });
 
-  const storedEmail = localStorage.getItem('fatherEmail') || 'mother1@example.com';
+  const [updatedFather, setUpdatedFather] = useState({
+    name: '',
+    address: '',
+    mobile: '',
+    job: '',
+  });
+
+
+  const storedEmail = localStorage.getItem('fatherEmail') || 'father2new@example.com';
   const [relationship, setRelationship] = useState('');
 
   const fetchFatherDetails = async () => {
@@ -127,9 +137,42 @@ const ProfilePage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform form submission logic here
-    console.log(formData); // Example: Log the form data to the console
-    handleClose(); // Close the dialog after submitting
+
+    let apiUrl = '';
+
+    if (relationship === 'Father') {
+      apiUrl = `http://localhost:8080/father/${formData.fatherID}`;
+    } else if (relationship === 'Mother') {
+      apiUrl = `http://localhost:8080/mother/${formData.motherID}`;
+    } else if (relationship === 'Guardian') {
+      apiUrl = `http://localhost:8080/guardian/${formData.guardianID}`;
+    }
+
+
+    console.log(updatedFather); // Example: Log the updated father details to the console
+    // Make an API call to update the father details
+    fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedFather),
+    })
+        .then((res) => {
+          if (res.ok) {
+            // Update the father details in the state or perform any necessary actions
+            console.log('Father details updated successfully');
+          } else {
+            console.error('Error updating father details');
+          }
+          handleClose(); // Close the dialog after submitting
+        })
+        .catch((error) => {
+          console.error('Error updating father details:', error);
+          handleClose(); // Close the dialog after submitting (even if there was an error)
+        });
   };
+
 
   return (
       <div className={classes.root}>
@@ -188,8 +231,8 @@ const ProfilePage = () => {
                       label="Full Name"
                       variant="outlined"
                       fullWidth
-                      value={formData.fullName}
-                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      value={updatedFather.name}
+                      onChange={(e) => setUpdatedFather({ ...updatedFather, name: e.target.value })}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -197,17 +240,8 @@ const ProfilePage = () => {
                       label="Phone Number"
                       variant="outlined"
                       fullWidth
-                      value={formData.phoneNumber}
-                      onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                      label="Email Address"
-                      variant="outlined"
-                      fullWidth
-                      value={formData.emailAddress}
-                      onChange={(e) => setFormData({ ...formData, emailAddress: e.target.value })}
+                      value={updatedFather.mobile}
+                      onChange={(e) => setUpdatedFather({ ...updatedFather, mobile: e.target.value })}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -215,8 +249,17 @@ const ProfilePage = () => {
                       label="Address"
                       variant="outlined"
                       fullWidth
-                      value={formData.address}
-                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                      value={updatedFather.address}
+                      onChange={(e) => setUpdatedFather({ ...updatedFather, address: e.target.value })}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                      label="Job"
+                      variant="outlined"
+                      fullWidth
+                      value={updatedFather.job}
+                      onChange={(e) => setUpdatedFather({ ...updatedFather, job: e.target.value })}
                   />
                 </Grid>
                 <Grid item xs={12}>
