@@ -19,8 +19,9 @@ const ClassRegistrationPage = () => {
 
     return (
         <Container maxWidth="sm">
+            <br/>
             <Typography variant="h4" align="center" gutterBottom>
-                Class Registration
+                Registered Classes
             </Typography>
             <Grid container spacing={2} alignItems="center">
                 <Grid item xs={8}>

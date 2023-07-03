@@ -13,9 +13,6 @@ import {
 
 const NotificationPage = () => {
   const [notifications, setNotifications] = useState([
-    { date: '2023-06-24', message: 'Your child did not attend school today.', reason: '', editing: true },
-    { date: '2023-06-23', message: 'Your child did not attend school today.', reason: '', editing: true },
-    { date: '2023-06-22', message: 'Your child did not attend school today.', reason: '', editing: true },
   ]);
 
   const handleReasonChange = (index, note) => {
@@ -25,13 +22,41 @@ const NotificationPage = () => {
   };
 
     const handleReasonSubmit = (index) => {
-    const updatedNotifications = [...notifications];
-    updatedNotifications[index].editing = false;
-    setNotifications(updatedNotifications);
+        const updatedNotifications = [...notifications];
+        const updatedNotification = { ...updatedNotifications[index] };
+        updatedNotification.editing = false;
+        updatedNotifications[index] = updatedNotification;
+        setNotifications(updatedNotifications);
+
+        const updatedAbsentNote = [...absentNote];
+        const updatedAbsentNoteItem = { ...updatedAbsentNote[index] };
+        updatedAbsentNoteItem.note = updatedNotification.note;
+        updatedAbsentNote[index] = updatedAbsentNoteItem;
+        setAbsentNote(updatedAbsentNote);
+
+        const requestBody = {
+            attendenceid: updatedAbsentNoteItem.attendenceID,
+            note: updatedAbsentNoteItem.note,
+        };
+
+        fetch(`http://localhost:8080/attendance/update/${updatedAbsentNoteItem.attendenceID}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody),
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                console.log('Absent note updated successfully:', result);
+            })
+            .catch((error) => {
+                console.error('Error updating absent note:', error);
+            });
+    };
 
 
 
-  };
 
   const studentID = localStorage.getItem('studentID') || 7;
   const [absent, setAbsent] = useState([]);
@@ -45,6 +70,7 @@ const NotificationPage = () => {
             //console.log(result);
             const formattedNotifications = result.map((notification) => ({
               studentID: notification.studentID,
+                attendenceID: notification.attendenceID,
               date: notification.date,
               month: notification.month,
               year: notification.year,
@@ -68,6 +94,7 @@ const NotificationPage = () => {
             //console.log(result);
             const formattedNotifications = result.map((notification) => ({
               studentID: notification.studentID,
+                attendenceID: notification.attendenceID,
               date: notification.date,
               month: notification.month,
               year: notification.year,
@@ -86,7 +113,7 @@ const NotificationPage = () => {
   return (
     <Container maxWidth="sm" sx={{ marginLeft: '2rem', marginRight: '2rem', width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Typography variant="h4" component="h1" align="center" gutterBottom>
-        Notifications from Parents
+        Absent Notifications | Submit Reason
       </Typography>
       <List sx={{ width: '100%' }}>
         {absent.map((notification, index) => (
@@ -138,7 +165,7 @@ const NotificationPage = () => {
       </List>
 
       <Typography variant="h4" component="h1" align="center" gutterBottom>
-        Notifications from Parents
+          Absent Notifications (Reason submitted)
       </Typography>
       <List sx={{ width: '100%' }}>
         {absentNote.map((notification, index) => (
