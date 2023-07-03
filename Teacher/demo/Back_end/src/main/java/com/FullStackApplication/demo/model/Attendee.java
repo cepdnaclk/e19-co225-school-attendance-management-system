@@ -2,10 +2,8 @@ package com.FullStackApplication.demo.model;
 
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Date;
 
@@ -18,7 +16,10 @@ public class Attendee {
     //private String Attendeename;
     private String name;
     private String email;
+    @Column(columnDefinition = "varchar(255) default 'Absent'")
     private String markAttendance; // New attribute
+    //@Temporal(TemporalType.DATE)
+    @CreationTimestamp
     private Date timestamp;
 
     public Date getTimestamp() {

@@ -16,6 +16,16 @@ public interface AttendanceService {
     public List<Attendence> findAbsentStudentNote(int studentID);
 
     public void updateReason(int id, Attendence attendence);
+
+    // Not Implemented
     public Attendence getAById(int attendenceId);
+
+    public Long findAllDays(int studentID, int year);
+
+    public Integer findAllAbsentDays(int studentID, int year);
+
+    public Boolean todatAttendence(int studentID, int year, int month, int date);
+
+    public List<String> findAbsMonth(int studentID, int year);
 
 }

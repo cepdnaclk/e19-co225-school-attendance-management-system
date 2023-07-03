@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 package com.studentadd.fullstack.exception;
 
 import org.springframework.http.HttpStatus;
@@ -20,3 +21,27 @@ public class UserNotFoundAdvice {
         return errorMap;
     }
 }
+=======
+package com.studentadd.fullstack.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
+public class UserNotFoundAdvice {
+    @ResponseBody
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, String> exceptionHandler(UserNotFoundException exception){
+        Map<String, String> errorMap=new HashMap<>();
+        errorMap.put("errorMessage",exception.getMessage());
+
+        return errorMap;
+    }
+}
+>>>>>>> Stashed changes
