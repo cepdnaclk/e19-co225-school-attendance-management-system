@@ -5,6 +5,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Settings } from "@mui/icons-material";
 import { useProSidebar } from "react-pro-sidebar";
+import book from '../assets/book.png';
 
 function AppHeader(){
     const { collapseSidebar, toggleSidebar, collapsed, broken } = useProSidebar();
@@ -17,7 +18,8 @@ function AppHeader(){
                 <Box 
                     component='img'
                     sx={styles.appLogo}
-                    src="/src/assets/book.png"/>
+                    src={book}/>
+
                 <Box sx={{flexGrow:1}}/>
                 <IconButton title='Notifications'  color="secondary">
                 <Badge badgeContent={14} color="primary">
