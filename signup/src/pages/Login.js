@@ -1,11 +1,12 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { Container, Typography, Link, Box, Divider } from "@mui/material";
+import { Container, Typography, Link, Box, Divider, Button } from "@mui/material";
 import styled from "@emotion/styled";
 import LoginForm from "../components/LoginForm";
 import SocialAuth from "../components/SocialAuth";
 import Logo from "../components/Logo";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 //////////////////////////////////
 const RootStyle = styled("div")({
@@ -46,7 +47,10 @@ const fadeInUp = {
   },
 };
 
+
+
 const Login = ({ setAuth }) => {
+  const navigate = useNavigate();
   return (
     <RootStyle>
       <Container maxWidth="sm">
@@ -70,7 +74,19 @@ const Login = ({ setAuth }) => {
 
           <LoginForm setAuth={setAuth} />
 
-          <Typography
+          <Box
+            fullWidth
+            height={20}
+          />
+
+          <Button variant="contained" color="primary" sx={{ height: 45 }}
+          onClick={() => navigate("/addstudent")}
+          >
+            Login as parent
+          </Button>
+
+
+         <Typography
             component={motion.p}
             {...fadeInUp}
             variant="body2"

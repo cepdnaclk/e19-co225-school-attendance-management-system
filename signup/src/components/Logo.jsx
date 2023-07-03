@@ -6,10 +6,19 @@ const Logo = () => {
   return (
     <Box>
       <Link to="/">
-        <Box component="img" src="/static/icon_logo.png" alt="logo" />
+        <img
+          src="/static/login.jpg"
+          alt="logo"
+          style={{
+            width: '180px', // Adjust the width as per your requirement
+            height: 'auto', // The height will adjust proportionally based on the width
+          }}
+        />
       </Link>
     </Box>
   );
 };
 
 export default Logo;
+
+

@@ -157,8 +157,24 @@ const LoginForm = ({ setAuth }) => {
               variant="contained"
               loading={isSubmitting}
             >
-              {isSubmitting ? "loading..." : "Login"}
+              {isSubmitting ? "loading..." : "Login as admin"}
             </LoadingButton>
+
+            {/*<Box
+            fullWidth
+            height={20}
+            />
+
+            <LoadingButton
+              fullWidth
+              size="large"
+              type="submit"
+              variant="contained"
+              loading={isSubmitting}
+            >
+              {isSubmitting ? "loading..." : "Login"}
+              </LoadingButton>*/}
+
           </Box>
         </Box>
       </Form>
