@@ -30,7 +30,7 @@ The school attendance system provides a number of benefits for schools, includin
 + Class teachers to mark attendance daily.
 +Send notifications and emails to parents and guardians when a student is absent.
 + Parents and guardians are to add notes explaining the reasons for the child's absence.
-+School principals and other authorized parties to view attendance statistics.
++ School principals and other authorized parties to view attendance statistics.
 
 ## 5. Users of the Application
 
