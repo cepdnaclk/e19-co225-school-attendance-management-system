@@ -76,7 +76,7 @@ The school attendance system provides a number of benefits for schools, includin
 + Teacher
 + Authoritative Officer
 
-.....
+---
 
 ## Links
 
