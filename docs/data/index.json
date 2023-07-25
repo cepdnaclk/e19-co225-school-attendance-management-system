@@ -7,12 +7,12 @@
         },
         {
             "name": "Premachandra k H J D",
-            "email": "e10295@eng.pdn.ac.lk",
-            "eNumber": "E/19/300"
+            "email": "e19295@eng.pdn.ac.lk",
+            "eNumber": "E/19/295"
         },
         {
             "name": "Wimalasiri P M A C",
-            "email": "email@eng.pdn.ac.lk",
+            "email": "e19452@eng.pdn.ac.lk",
             "eNumber": "E/19/452"
         },
         {
@@ -30,21 +30,26 @@
             "email":"e19060@eng.pdn.ac.lk",
             "eNumber": "E/19/060"
         },
-		{
+	{
             "name": "Delini",
             "email": "e19069@eng.pdn.ac.lk",
             "eNumber": "E/19/069"
+        },
+	{
+            "name": "Nithusikan T.",
+            "email": "e19266@eng.pdn.ac.lk",
+            "eNumber": "E/19/266"
         }
     ],
     "supervisors": [
         {
-            "name": "Dr. Supervisor 1",
-            "email": "email@eng.pdn.ac.lk"
+            "name": "Dr. Mahanama Wickramasinghe",
+            "email": "mahanamaw@eng.pdn.ac.lk"
         },
         {
-            "name": "Supervisor 2",
+            "name": "Mrs. Nadeesha Adikari",
             "email": "email@eng.pdn.ac.lk"
         }
     ],
-    "tags": []
+    "tags": ["CO225", "CO225-e19"]
 }
