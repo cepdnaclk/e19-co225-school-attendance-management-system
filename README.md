@@ -42,7 +42,7 @@ The school attendance system provides a number of benefits for schools, includin
 ## Team Members
 1. DANUJAN - E/19/060
 2. DELINI - E/19/069
-3. NITHUSHIKAN - E/19/266
+3. NITHUSIKAN - E/19/266
 4. THEVAMBIKAI - E/19/494
 5. JANITHA - E/19/295
 6. ASELA - E/19/300
